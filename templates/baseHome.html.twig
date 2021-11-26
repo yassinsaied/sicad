@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        Welcome!
+      {% endblock %}
+    </title>
+
+    <link rel="icon"
+      href="{{ asset('img/brand/favicon.png') }}"
+      type="image/png" />
+    <!-- Fonts -->
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+    <!-- Icons -->
+    <link rel="stylesheet"
+      href="{{ asset('vendor/nucleo/css/nucleo.css') }}"
+      type="text/css" />
+    <link rel="stylesheet"
+      href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}"
+      type="text/css" />
+    <!-- Page plugins -->
+    <!-- Argon CSS -->
+    <link rel="stylesheet"
+      href="{{ asset('css/argon.css?v=1.2.0') }}"
+      href=""
+      type="text/css" />
+    {% block stylesheets %}
+
+    {% endblock %}
+  </head>
+  <body>
+    <!-- Main Menu -->
+    {% include './helpresBack/mainMenu.html.twig' %}
+
+    <!-- Main content -->
+    <div class="main-content" id="panel">
+      <!-- Top Nav Bar -->
+      {% include './helpresBack/topNavContent.html.twig' %}
+
+      <!-- Page content -->
+      <div class="container-fluid mt--6">
+        <!-- Switch content -->
+        <div class="row">
+          {% block content %}
+
+          {% endblock %}
+        </div>
+
+        <!-- Footer -->
+        {# {% include './helpresBack/footer.html.twig' %} #}
+      </div>
+    </div>
+
+    <script type="text/javascript"
+      src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript"
+      src="{{
+      asset(
+        'vendor/bootstrap/dist/js/bootstrap.bundle.min.js'
+      )
+      }}"></script>
+    <script type="text/javascript"
+      src="{{
+      asset(
+        'vendor/jquery.scrollbar/jquery.scrollbar.min.js'
+      )
+      }}"></script>
+    <script type="text/javascript"
+      src="{{
+      asset(
+        'vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js'
+      )
+      }}"></script>
+
+    <!-- Argon JS -->
+    <script type="text/javascript"
+      src="{{ asset('js/argon.js?v=1.2.0') }}"></script>
+    {% block javascripts %}
+
+    {% endblock %}
+  </body>
+</html>
