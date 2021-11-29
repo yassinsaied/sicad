@@ -1,0 +1,16 @@
+login:
+    path: "/login"
+    controller: App\Controller\SecurityController::login
+    #methods: POST
+
+logout:
+    path: "/logout"
+    controller: App\Controller\SecurityController::logout
+    #methods: POST    
+
+
+
+registration:
+    path: "/adminsicad/registration"
+    controller: App\Controller\SecurityController::registration
+    methods: POST

@@ -1,0 +1,4 @@
+home_admin:
+    path: "/adminsicad"
+    controller: App\Controller\HomeAdminController::index
+   
