@@ -33,7 +33,9 @@
   </head>
   <body>
     <!-- Main Menu -->
-    {# {% include './helpresBack/mainMenu.html.twig' %} #}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+     {% include 'admin/helpresAdmin/mainMenu.html.twig' %}
+     {% endif %}
 
     <!-- Main content -->
     <div class="main-content" id="panel">
@@ -41,9 +43,9 @@
        {% include 'admin/helpresAdmin/topNavContent.html.twig' %} 
 
       <!-- Page content -->
-      <div class="container-fluid mt--6">
+      <div class="container-fluid pt-5">
         <!-- Switch content -->
-        <div class="row">
+        <div class="row justify-content-center">
           {% block content %}
 
           {% endblock %}

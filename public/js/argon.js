@@ -27,7 +27,7 @@ var Layout = (function () {
     $(".sidenav-toggler").addClass("active");
     $(".sidenav-toggler").data("action", "sidenav-unpin");
     $("body")
-      .removeClass("g-sidenav-hidden")
+      .removeClass("g-sidenav-hidden g-sidenav-pinned")
       .addClass("g-sidenav-show g-sidenav-pinned");
     $("body").append(
       '<div class="backdrop d-xl-none" data-action="sidenav-unpin" data-target=' +
@@ -36,7 +36,7 @@ var Layout = (function () {
     );
 
     // Store the sidenav state in a cookie session
-    Cookies.set("sidenav-state", "pinned");
+   // Cookies.set("sidenav-state", "pinned");
   }
 
   function unpinSidenav() {
@@ -46,7 +46,7 @@ var Layout = (function () {
     $("body").find(".backdrop").remove();
 
     // Store the sidenav state in a cookie session
-    Cookies.set("sidenav-state", "unpinned");
+   // Cookies.set("sidenav-state", "unpinned");
   }
 
   // // Set sidenav state from cookie
@@ -79,56 +79,56 @@ var Layout = (function () {
   //   })
   // }
 
-  // $("body").on("click", "[data-action]", function(e) {
+  $("body").on("click", "[data-action]", function(e) {
 
-  //     e.preventDefault();
+   e.preventDefault();
 
-  //     var $this = $(this);
-  //     var action = $this.data('action');
-  //     var target = $this.data('target');
+      var $this = $(this);
+      var action = $this.data('action');
+      var target = $this.data('target');
 
-  //     // Manage actions
+      // Manage actions
 
-  //     switch (action) {
-  //         case 'sidenav-pin':
-  //             pinSidenav();
-  //         break;
+      switch (action) {
+          case 'sidenav-pin':
+              pinSidenav();
+          break;
 
-  //         case 'sidenav-unpin':
-  //             unpinSidenav();
-  //         break;
+          case 'sidenav-unpin':
+              unpinSidenav();
+          break;
 
-  //         case 'search-show':
-  //             target = $this.data('target');
-  //             $('body').removeClass('g-navbar-search-show').addClass('g-navbar-search-showing');
+          case 'search-show':
+              target = $this.data('target');
+              $('body').removeClass('g-navbar-search-show').addClass('g-navbar-search-showing');
 
-  //             setTimeout(function() {
-  //                 $('body').removeClass('g-navbar-search-showing').addClass('g-navbar-search-show');
-  //             }, 150);
+              setTimeout(function() {
+                  $('body').removeClass('g-navbar-search-showing').addClass('g-navbar-search-show');
+              }, 150);
 
-  //             setTimeout(function() {
-  //                 $('body').addClass('g-navbar-search-shown');
-  //             }, 300)
-  //         break;
+              setTimeout(function() {
+                  $('body').addClass('g-navbar-search-shown');
+              }, 300)
+          break;
 
-  //         case 'search-close':
-  //             target = $this.data('target');
-  //             $('body').removeClass('g-navbar-search-shown');
+          case 'search-close':
+              target = $this.data('target');
+              $('body').removeClass('g-navbar-search-shown');
 
-  //             setTimeout(function() {
-  //                 $('body').removeClass('g-navbar-search-show').addClass('g-navbar-search-hiding');
-  //             }, 150);
+              setTimeout(function() {
+                  $('body').removeClass('g-navbar-search-show').addClass('g-navbar-search-hiding');
+              }, 150);
 
-  //             setTimeout(function() {
-  //                 $('body').removeClass('g-navbar-search-hiding').addClass('g-navbar-search-hidden');
-  //             }, 300);
+              setTimeout(function() {
+                  $('body').removeClass('g-navbar-search-hiding').addClass('g-navbar-search-hidden');
+              }, 300);
 
-  //             setTimeout(function() {
-  //                 $('body').removeClass('g-navbar-search-hidden');
-  //             }, 500);
-  //         break;
-  //     }
-  // })
+              setTimeout(function() {
+                  $('body').removeClass('g-navbar-search-hidden');
+              }, 500);
+          break;
+      }
+  })
 
   // Add sidenav modifier classes on mouse events
 
@@ -588,7 +588,7 @@ var NavbarCollapse = (function () {
 
   var navbar_menu_visible = 0;
 
-  $(".sidenav-toggler").click(function () {
+  $(".sidenav-toggler").on( 'click' ,function () {
     if (navbar_menu_visible == 1) {
       $("body").removeClass("nav-open");
       navbar_menu_visible = 0;
@@ -597,7 +597,7 @@ var NavbarCollapse = (function () {
       var div = '<div class="bodyClick"></div>';
       $(div)
         .appendTo("body")
-        .click(function () {
+        .on( 'click' ,function () {
           $("body").removeClass("nav-open");
           navbar_menu_visible = 0;
           $(".bodyClick").remove();

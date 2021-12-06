@@ -1,0 +1,4 @@
+update_profile:
+    path: "/adminsicad/update-profile"
+    controller: App\Controller\UserController::updateProfile
+    #methods:    PUT

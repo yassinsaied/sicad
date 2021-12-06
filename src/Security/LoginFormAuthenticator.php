@@ -49,9 +49,16 @@ class LoginFormAuthenticator extends AbstractAuthenticator
         return new Passport(
             new UserBadge($email, function($userIdentifier) {
                 $user = $this->userRepo->findOneByEmail($userIdentifier);
+                
                 if (!$user) {
                     throw new CustomUserMessageAuthenticationException("User Not Found");
                 }
+
+                if($user->getIsActivate() !== true){
+
+                    throw new CustomUserMessageAuthenticationException("Your Account is Not activate");
+                }
+
                 return $user;
             }),
             new PasswordCredentials($password),

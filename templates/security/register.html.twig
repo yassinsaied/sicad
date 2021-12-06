@@ -1,0 +1,90 @@
+{% extends 'admin/baseBack.html.twig' %}
+
+{% block content %}
+
+{# {% form_theme formRegister "admin/helpresAdmin/form_them.html.twig" %} #}
+  <!-- Page content -->
+  <div class="container mt-8 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7">
+        <div class="card bg-secondary border-0 mb-0">
+          <div class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              <h3>
+                Register
+              </h3>
+            </div>
+
+
+               {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                   </div>
+               {% endfor %}
+          
+            {{ form_start(formRegister, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                  <div class="form-group mb-3"> 
+                  {{ form_errors(formRegister.email ) }}
+                      <div class="input-group input-group-merge input-group-alternative">    
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                          </div>
+                          {{ form_widget(formRegister.email , {'attr': {'class': 'form-control' , 'placeholder' : 'Email'}}) }} 
+                      </div> 
+                  </div>  
+
+                  <div class="form-group mb-3"> 
+                    {{ form_errors(formRegister.plainPassword.first ) }}
+                    <div class="input-group input-group-merge input-group-alternative">        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                        </div>
+                        {{ form_widget(formRegister.plainPassword.first, {'attr': {'class': 'form-control' , 'placeholder' : 'Password'}}) }}  
+                    </div>    
+                  </div> 
+
+                   <div class="form-group mb-3">
+                    {{ form_errors(formRegister.plainPassword.second ) }} 
+                    <div class="input-group input-group-merge input-group-alternative">        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                        </div>
+                        {{ form_widget(formRegister.plainPassword.second, {'attr': {'class': 'form-control' , 'placeholder' : 'Confirm Password'}}) }}  
+                    </div>    
+                  </div> 
+
+                  
+
+                  <div class="form-group mb-3">
+                    {{ form_errors(formRegister.firstName ) }} 
+                    <div class="input-group input-group-merge input-group-alternative">       
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                        </div>
+                        {{ form_widget(formRegister.firstName , {'attr': {'class': 'form-control' , 'placeholder' : 'First Name'}}) }}  
+                    </div>
+                  </div>  
+
+                  <div class="form-group mb-3"> 
+                    {{ form_errors(formRegister.lastName ) }}
+                    <div class="input-group input-group-merge input-group-alternative">        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                        </div>
+                        {{ form_widget(formRegister.lastName , {'attr': {'class': 'form-control' , 'placeholder' : 'Last Name'}}) }}  
+                      </div>
+                  </div>   
+
+                <div class="text-center">     
+                  
+                    {{ form_widget(formRegister.Register , {'attr': {'class': 'btn btn-primary my-4'}}) }}  
+                  </div>  
+
+            {{ form_end(formRegister) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

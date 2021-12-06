@@ -1,0 +1,56 @@
+{% block form_row %}
+ 
+  <div class="form-group mb-3">
+ 
+   {{form_errors(form)}}
+   
+  <div class="input-group input-group-merge input-group-alternative">
+    {{ form_widget(form , {'attr': {'class': 'form-control'}}) }}
+   </div>
+ </div>
+{% endblock %}
+
+{% block email_widget %}
+  <div class="input-group-prepend">
+    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+  </div>
+    {{ form_widget(form , {'attr': {'class': 'form-control'}}) }}
+{% endblock %}
+
+
+{% block password_widget %}
+ <div class="input-group-prepend">
+   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+ </div>
+    {{ form_widget(form , {'attr': {'class': 'form-control' ,  'type' : 'password' }}) }}
+{% endblock %}
+
+
+{% block _user_registration_firstName_widget %}
+ <div class="input-group-prepend">
+   <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+ </div>
+    {{ form_widget(form , {'attr': {'class': 'form-control'}}) }}
+{% endblock %}
+
+{% block _user_registration_lastName_widget %}
+ <div class="input-group-prepend">
+   <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+ </div>
+    {{ form_widget(form , {'attr': {'class': 'form-control'}}) }}
+{% endblock %}
+
+
+
+{# 
+<div class="input-group input-group-merge input-group-alternative">
+  <div class="input-group-prepend">
+    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+  </div>
+  <input class="form-control"
+    placeholder="Email"
+    type="email"
+    name="email"
+    required
+    autofocus />
+</div> #}
