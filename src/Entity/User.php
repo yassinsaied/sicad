@@ -99,9 +99,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Regex(
+     *     pattern = "/^[0-9]{8}$/i",
+     *     message = "Phone Invalid"
+     * )
      */
     private $tel;
-
+ 
     /**
      * @ORM\Column(type="boolean")
      */
@@ -118,7 +122,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
     private $thumb;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     mimeTypes = {"image/jpeg","image/png" ,"image/jpg"},
+     *     mimeTypesMessage = "Please upload  jpeg , jpg , png Image" ,
+     *     maxSizeMessage = "maximaum size of image is 2 Mo"
+     * )
      * 
      * @Vich\UploadableField(mapping="user_thumb", fileNameProperty="thumb")
      * 
@@ -155,7 +164,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -280,7 +289,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
@@ -292,7 +301,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
         return $this->lastName;
     }
 
-    public function setLastName(string $lastName): self
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 

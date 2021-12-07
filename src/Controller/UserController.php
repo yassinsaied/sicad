@@ -22,13 +22,11 @@ class UserController extends AbstractController
      }
    
     public function updateProfile(Request $request): Response
-    {   
-         $user =  $this->getUser();
-        
+    {    $user =  $this->getUser();
          $form =  $this->createForm(ProfileType::class , $user);
          $form->handleRequest($request);
          if($form->isSubmitted() && $form->isValid()) {
-          
+         
             $this->entityManager->flush();
             return $this->redirectToRoute('home_admin');
          }

@@ -59,10 +59,10 @@
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
                   <img alt="Image placeholder"
-                    src="{{ asset('img/theme/team-1.jpg') }}" />
+                    src="{{asset('uploads/user/'~ app.user.thumb)  | imagine_filter('user_thumb_nav') }}" />
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm font-weight-bold">John Snow</span>
+                  <span class="mb-0 text-sm font-weight-bold">{{app.user.firstName ~" " ~ app.user.lastName  }}</span>
                 </div>
               </div>
             </a>
@@ -72,9 +72,9 @@
                   Welcome!
                 </h6>
               </div>
-              <a href="#!" class="dropdown-item">
+              <a href="{{ path('update_profile') }}" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
-                <span>My profile</span>
+                <span>Update My profile</span>
               </a>
               <a href="#!" class="dropdown-item">
                 <i class="ni ni-settings-gear-65"></i>
@@ -89,7 +89,7 @@
                 <span>Support</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#!" class="dropdown-item">
+              <a  href="{{ path('logout') }}" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
                 <span>Logout</span>
               </a>
@@ -103,7 +103,7 @@
   <!-- Navbar ANONYMOUS -->
   <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="#">Sicad</a>
+      <a class="navbar-brand" href="{{ path('home_admin') }}">Sicad</a>
       <button class="navbar-toggler"
         type="button"
         data-toggle="collapse"
@@ -137,12 +137,12 @@
         </div>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a href="login.html" class="nav-link">
+            <a  href="{{ path('login')}}" class="nav-link">
               <span class="nav-link-inner--text">Login</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="register.html" class="nav-link">
+            <a href="{{ path('registration')}}" class="nav-link">
               <span class="nav-link-inner--text">Register</span>
             </a>
           </li>

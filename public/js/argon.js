@@ -1047,4 +1047,53 @@ var Scrollbar = (function () {
   if ($scrollbar.length) {
     init();
   }
+
+//upload thumbnail of user 
+
+
+function display(input) {
+  if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function(event) {
+        $('#image-thumb').attr('src', event.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+$('#OpenImgUpload').on('click' ,function(){
+   $('#profile_thumbFile_file').trigger('click'); 
+   
+  });
+
+ $("#profile_thumbFile_file").on('change', function() {
+  display(this);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })();

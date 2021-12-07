@@ -1,0 +1,19 @@
+/* update thumb user */
+
+#OpenImgUpload{
+    position: absolute;
+    left: 55%;
+    top: 40%;
+    z-index: 3000;
+    font-size: 25px;
+   
+}
+
+#image-thumb {
+     width: 134px;
+     height: 134px;
+}
+
+.custom-file .custom-file-label , .custom-file #profile_thumbFile_file{
+    display: none;
+}

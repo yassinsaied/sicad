@@ -6,6 +6,13 @@
   <div class="col-xl-8 order-xl-1">
     <div class="card">
       <div class="card-header">
+
+          <div class="card-profile-image">
+                  <a href="#" id="OpenImgUpload">  <i class="fa fa-camera" aria-hidden="true"></i></a>
+                  <a  href="#">
+                    <img id="image-thumb" src="{{asset('uploads/user/'~ app.user.thumb) | imagine_filter('user_thumb') }}" class="rounded-circle">
+                  </a>
+                </div>
         <div class="row align-items-center">
           <div class="col-8">
             <h3 class="mb-0">
@@ -18,7 +25,7 @@
       <div class="card-body">
        {{ form_start(updateProfile, {'attr': {'novalidate': 'novalidate' , 'enctype':'multipart/form-data'}}) }}
 
-       {{ form_errors(updateProfile) }}
+        {{ form_errors(updateProfile.thumbFile ) }}
           <h6 class="heading-small text-muted mb-4">
             User information
           </h6>
@@ -26,7 +33,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group">
-                 {{ form_errors(updateProfile.email ) }}
+                
                  {{ form_label(updateProfile.email, ' Email address', {'label_attr': {'class': 'form-control-label'}}) }}
                  {{ form_widget(updateProfile.email , {'attr': {'class': 'form-control' , 'id' : 'input-email'}}) }} 
                 </div>
@@ -35,14 +42,14 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
-                 {{ form_errors(updateProfile.firstName ) }}
+               
                  {{ form_label(updateProfile.firstName, ' First Name', {'label_attr': {'class': 'form-control-label'}}) }}
                  {{ form_widget(updateProfile.firstName , {'attr': {'class': 'form-control' , 'id' : 'input-first-name'}}) }} 
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
-                 {{ form_errors(updateProfile.lastName ) }}
+                
                  {{ form_label(updateProfile.lastName, ' Last Name', {'label_attr': {'class': 'form-control-label'}}) }}
                  {{ form_widget(updateProfile.lastName , {'attr': {'class': 'form-control' , 'id' : 'input-last-name'}}) }} 
                 </div>
@@ -58,7 +65,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                 {{ form_errors(updateProfile.address ) }}
+               
                  {{ form_label(updateProfile.address, ' Address', {'label_attr': {'class': 'form-control-label'}}) }}
                  {{ form_widget(updateProfile.address , {'attr': {'class': 'form-control' , 'id' : 'input-adress'}}) }} 
                 </div>
@@ -67,7 +74,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group">
-                    {{ form_errors(updateProfile.tel) }}
+                  
                     {{ form_label(updateProfile.tel, ' Phone', {'label_attr': {'class': 'form-control-label'}}) }}
                     {{ form_widget(updateProfile.tel , {'attr': {'class': 'form-control' , 'id' : 'input-tel'}}) }} 
                 </div>
@@ -83,7 +90,7 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
-                 {{ form_errors(updateProfile.gradJobe ) }}
+                 
                  {{ form_label(updateProfile.gradJobe, ' Administrative grade', {'label_attr': {'class': 'form-control-label'}}) }}
                  {{ form_widget(updateProfile.gradJobe , {'attr': {'class': 'form-control' , 'id' : 'input-grade-function'}}) }} 
                 </div>
@@ -98,16 +105,16 @@
             </div> 
           </div>
         
-
+               
              {{ form_widget(updateProfile.thumbFile , {'attr': {'class': 'form-control' , 'id' : 'input-thumb-file'}}) }} 
 
 
 
          <div class="pl-lg-4">
-            <div class="row">
-                <div class="text-center">     
+            <div class="row justify-content-center">
+               
                          {{ form_widget(updateProfile.update , {'label': 'Update My Profile'}, {'attr': {'class': 'btn btn-primary my-4'}}) }}  
-                  </div> 
+                
             </div>
         <div>          
 

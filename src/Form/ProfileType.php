@@ -21,10 +21,16 @@ class ProfileType extends AbstractType
             ->add('lastName')
             ->add('address')
             ->add('tel')
-            ->add('thumbFile', VichFileType::class)
+            ->add('thumbFile', VichFileType::class , [
+                
+                    'allow_delete' => false,
+                    'delete_label' => false,
+                    'download_uri' =>  false,
+                    'download_label' => false,
+                    'asset_helper' => false,
+            ])
             ->add('gradJobe')
             ->add('functionJob')
-           
             ->add('update' , SubmitType::class);
         ;
     }
