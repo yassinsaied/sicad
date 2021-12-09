@@ -13,7 +13,6 @@ liip_imagine:
     filter_sets:
         cache: ~
 
-
         user_thumb:
             quality: 70
             filters:

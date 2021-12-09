@@ -13,6 +13,11 @@
      width: 134px;
      height: 134px;
 }
+.avatar img {
+ 
+  
+    height: 36px;
+}
 
 .custom-file .custom-file-label , .custom-file #profile_thumbFile_file{
     display: none;

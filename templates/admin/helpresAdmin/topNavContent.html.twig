@@ -59,7 +59,7 @@
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
                   <img alt="Image placeholder"
-                    src="{{asset('uploads/user/'~ app.user.thumb)  | imagine_filter('user_thumb_nav') }}" />
+                    src="{{asset('uploads/user/'~ app.user.thumb)}}" />
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm font-weight-bold">{{app.user.firstName ~" " ~ app.user.lastName  }}</span>
@@ -76,9 +76,9 @@
                 <i class="ni ni-single-02"></i>
                 <span>Update My profile</span>
               </a>
-              <a href="#!" class="dropdown-item">
-                <i class="ni ni-settings-gear-65"></i>
-                <span>Settings</span>
+              <a href="{{ path('update_password') }}" class="dropdown-item">
+                <i class="ni ni-lock-circle-open"></i>
+                <span>Reset Password</span>
               </a>
               <a href="#!" class="dropdown-item">
                 <i class="ni ni-calendar-grid-58"></i>

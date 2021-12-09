@@ -2,3 +2,8 @@ update_profile:
     path: "/adminsicad/update-profile"
     controller: App\Controller\UserController::updateProfile
     #methods:    PUT
+
+update_password:
+    path: "/adminsicad/update-password"
+    controller: App\Controller\UserController::updatePassword
+    #methods:    PUT    

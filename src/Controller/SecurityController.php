@@ -46,7 +46,8 @@ class SecurityController extends AbstractController
        
         if($form->isSubmitted() && $form->isValid()) {
           
-            $user->setRoles(array('ROLE_USER'));
+            $user->setRoles(array("ROLE_USER"));
+            $user->setThumb("avatar.png");
             $user->setIsActivate(0);
             $user->setIsDeleted(0);
             $plaintextPassword = $form->get("plainPassword")->getData(); 

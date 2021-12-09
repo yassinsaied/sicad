@@ -2,15 +2,9 @@ security:
     enable_authenticator_manager: true
     
     role_hierarchy:
-        ROLE_ADMIN: ['ROLE_USER']
-        
-    
-
-
-
-
-
-
+        ROLE_ADMIN: ['ROLE_AUTHEUR' ,'ROLE_USER']
+        ROLE_AUTHEUR: ['ROLE_USER']
+   
 
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
