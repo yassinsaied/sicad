@@ -10,9 +10,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ChangePasswordFormType extends AbstractType
-{
+{   
+    private  $translator ;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+     $this->translator = $translator;
+    }
+ 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -22,24 +31,26 @@ class ChangePasswordFormType extends AbstractType
                     'attr' => ['autocomplete' => 'new-password'],
                     'constraints' => [
                         new NotBlank([
-                            'message' => 'Choose a password!'
+                         'message' => $this->translator->trans('req.password')
                         ]),
                         new Regex([
                             'pattern' => '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/i',
-                            'message' => "Password Invalid : Minimum eight characters, at least one uppercase letter, one lowercase letter and one number"
+                            'message' =>  $this->translator->trans('valid.password')
                         ])
                     ],
-                    'label' => 'New password',
+                    'label' =>  $this->translator->trans('new.passe')
                 ],
                 'second_options' => [
                     'attr' => ['autocomplete' => 'new-password'],
-                    'label' => 'Repeat Password',
+                    'label' =>  $this->translator->trans('Confirme.new.passe'),
                 ],
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => $this->translator->trans('match.password'),
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
             ])
+
+            ->add('updatePass' , SubmitType::class)
         ;
     }
 

@@ -34,7 +34,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('home_admin');
          }
 
-        return $this->render('user/update_profile.html.twig', [
+        return $this->render('admin/user/update_profile.html.twig', [
            
             'updateProfile' => $form->createView(),
         ]);
@@ -79,7 +79,7 @@ class UserController extends AbstractController
 
 
          
-         return $this->render('user/update_password.html.twig',[
+         return $this->render('admin/user/update_password.html.twig',[
 
             'updatePasswordForm' => $form->createView(),
 

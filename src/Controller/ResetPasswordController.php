@@ -18,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/reset-password")
@@ -28,11 +29,14 @@ class ResetPasswordController extends AbstractController
 
     private $resetPasswordHelper;
     private $entityManager;
+    private  $translator ;
 
-    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper, EntityManagerInterface $entityManager)
+
+    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper, EntityManagerInterface $entityManager , TranslatorInterface $translator)
     {
         $this->resetPasswordHelper = $resetPasswordHelper;
         $this->entityManager = $entityManager;
+        $this->translator = $translator;
     }
 
     /**
@@ -92,16 +96,13 @@ class ResetPasswordController extends AbstractController
 
         $token = $this->getTokenFromSession();
         if (null === $token) {
-            throw $this->createNotFoundException('No reset password token found in the URL or in the session.');
+            throw $this->createNotFoundException($this->translator->trans('no.pass.token'));
         }
 
         try {
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
-            $this->addFlash('reset_password_error', sprintf(
-                'There was a problem validating your reset request - %s',
-                $e->getReason()
-            ));
+            $this->addFlash('reset_password_error',$this->translator->trans('prob.validation')); 
 
             return $this->redirectToRoute('app_forgot_password_request');
         }

@@ -1,0 +1,33 @@
+add_category:
+    path: "/adminsicad/add-category/{_locale}"
+    controller: App\Controller\CategoryController::addCategory
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%' 
+
+update_category:
+    path: "/adminsicad/update-category/{slug}/{_locale}"
+    controller: App\Controller\CategoryController::updateCategory
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%' 
+
+list_category:
+    path: "/adminsicad/list-category/{_locale}"
+    controller: App\Controller\CategoryController::listCategory
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%'
+
+delete_category:
+    path: "/adminsicad/delete-category/{slug}/{_locale}"
+    controller: App\Controller\CategoryController::deleteCategory
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%'  
+
+

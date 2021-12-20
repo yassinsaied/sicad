@@ -1,0 +1,115 @@
+{% extends 'admin/baseBack.html.twig' %}
+
+{% block title %}{{'add.categ'|trans}}{% endblock %}
+
+
+
+
+{% block content %}
+
+
+    <div class="col-xl-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">
+             {{'add.categ'|trans}}
+            </h3>
+          </div>
+    
+        </div>
+      </div>
+      <div class="card-body">
+       {{ form_start(addCategoryForm, {'attr': {'novalidate': 'novalidate'}}) }}
+              {{ form_errors(addCategoryForm) }}
+    
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addCategoryForm.name, 'name.categ'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addCategoryForm.name , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addCategoryForm.labelFr, 'title.categ.fr'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addCategoryForm.labelFr , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addCategoryForm.labelEn, 'title.categ.en'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addCategoryForm.labelEn , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addCategoryForm.labelAr, 'title.categ.ar'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addCategoryForm.labelAr , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+           <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addCategoryForm.parent, 'sup.categ'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addCategoryForm.parent , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+
+
+
+         
+     
+          </div>
+         <div class="pl-lg-4">
+            <div class="row justify-content-center">
+               
+                 {{ form_widget(addCategoryForm.addCateg , {'label': 'submit.new.categ'|trans}, {'attr': {'class': 'btn btn-primary my-4'}}) }}  
+                
+            </div>
+        <div>          
+
+        {{ form_end(addCategoryForm) }} 
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# 
+   {{ form_start(addCategoryForm) }}
+      {{ form_widget(addCategoryForm) }}
+   {{ form_end(addCategoryForm) }} #}
+
+{% endblock %}

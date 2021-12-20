@@ -1,16 +1,24 @@
-login:
-    path: "/login"
-    controller: App\Controller\SecurityController::login
-    #methods: POST
+registration:
+    path: "/register/{_locale}"
+    controller: App\Controller\SecurityController::register
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%'
 
+login:
+    path: "/login/{_locale}"
+    controller: App\Controller\SecurityController::login
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%'
+    
 logout:
     path: "/logout"
     controller: App\Controller\SecurityController::logout
-    #methods: POST    
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%'   
 
-
-
-registration:
-    path: "/register"
-    controller: App\Controller\SecurityController::register
-    #methods: POST

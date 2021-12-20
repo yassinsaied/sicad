@@ -12,26 +12,37 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
 
 
 class UserRegistrationType extends AbstractType
-{
+{   
+
+   private  $translator ;
+
+   public function __construct(TranslatorInterface $translator)
+   {
+    $this->translator = $translator;
+   }
+
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email', EmailType::class)
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => $this->translator->trans('match.password'),
                 'required' => true,
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Choose a password!'
+                        'message' => $this->translator->trans('req.password')
                     ]),
                     new Regex([
                         'pattern' => '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/i',
-                        'message' => "Password Invalid : Minimum eight characters, at least one uppercase letter, one lowercase letter and one number"
+                        'message' =>$this->translator->trans('valid.password')
                     ])
                 ]
             ])

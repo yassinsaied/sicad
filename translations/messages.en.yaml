@@ -1,0 +1,86 @@
+SICAD: SICAD
+bienvenue: bienvenue
+
+#main menu
+Tableau.debord: Tableau de bord
+add.menu.categ: Ajouter une catégorie
+
+#user Menu
+deconnecter: Se déconnecter
+Mon.profil: Mon profil
+
+# profile form
+maj.profil: Upadte My Profile
+info.user: USER INFORMATION
+user.email: E-mail
+fname: First Name
+lname: Last Name
+info.conatct: CONTACT INFORMATION
+address: Address
+phone: Phone
+info.administratif: ADMINISTRATIVE INFORMATION
+grade.administratif: Administrative grade
+fonction.administratif: Administrative function
+
+# reset password form
+reset.passe: Reset My password
+current.passe: Your current password
+new.passe: New Password
+Confirme.new.passe: Confirm the new password
+forgot.pass: Forgot password?
+
+#login
+connexion: Login
+passe: Password
+identifier: sigin in
+remember.me: Remember me
+
+#Register
+
+inscrire: Register
+confirme.passe: Confirme Password
+success.register: We have received your rgistration , Your account will be activated By the administrator soon.
+
+#logout
+logout: logout
+
+#forgot password
+send.pass.email: Send password reset email
+title.msg.after.send: Password Reset Email Sent
+desc.send.email: Enter your email address and we will send you alink to reset your password.
+msg.after.send: If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password. This link will expire in 1 heure.<br>If you don't receive an email please check your spam folder or try again.
+no.pass.token: No reset password token found in the URL or in the session.
+prob.validation: There was a problem validating your reset request
+
+#LoginFormAuthenticator
+user.notfound: User Not Found
+activate.account: Your Account is Not activate
+
+#navBar anonymous
+fb.title: Like us on Facebook
+insta.title: Follow us on Instagram
+tweeter.title: Follow us on Twitter
+
+#category crud
+category: Category
+add.categ: Add new category
+name.categ: Unique category name
+title.categ.fr: Category title FR
+title.categ.en: Category title En
+title.categ.ar: Category title Ar
+sup.categ: superior category
+submit.new.categ: Validate category
+list.table.lable: Category
+list.table.action: Actions
+list.categ: List of categories
+error.delete: Cannot delete this category
+title.modale.delete.categ: confirmation of deletion
+message.modale.delete.categ: Are you sure you want to delete the category
+
+#datatable
+lengthMenu: Records per page
+zeroRecords: Nothing found - sorry
+info: Showing page
+infoEmpty: No records available
+infoFiltered: filtered from
+search: Search

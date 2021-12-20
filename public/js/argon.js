@@ -1071,6 +1071,7 @@ $('#OpenImgUpload').on('click' ,function(){
   display(this);
 });
 
+// data table of category
 
 
 

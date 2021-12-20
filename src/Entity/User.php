@@ -21,7 +21,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(
  *     fields={"email"},
- *     message="This email is already taken."
+ *     message="email.teken"
  * )
  * @Vich\Uploadable
  */
@@ -38,10 +38,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(
-     *              message = "Email is required"
+     *              message = "req.email"
      * )
      * @Assert\Email(
-     *             message="This Email is not valid"
+     *             message="valid.email"
      * )
      */
     private $email;
@@ -60,11 +60,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
 
     // /**
     //  * @Assert\NotBlank(
-    //  *              message = "Password is required "
+    //  *              message = " "
     //  * )
     //  * @Assert\Regex(
     //  *     pattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/i",
-    //  *     message = "Password Invalid : Minimum eight characters, at least one uppercase letter, one lowercase letter and one number"
+    //  *     message = "valid.password"
     //  * )
     //  */
     // private $plainPassword;
@@ -73,7 +73,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(
-     *          message = " First Name is required "
+     *          message = "req.firstname"
      * )
      
      */
@@ -82,7 +82,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(
-     *          message = " Last Name is required "
+     *          message = "req.lastname"
      * )
      */
     private $lastName;
@@ -101,7 +101,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
      * @ORM\Column(type="integer", nullable=true)
      * @Assert\Regex(
      *     pattern = "/^[0-9]{8}$/i",
-     *     message = "Phone Invalid"
+     *     message = "valid.phone"
      * )
      */
     private $tel;
@@ -125,8 +125,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
      * @Assert\File(
      *     maxSize = "2048k",
      *     mimeTypes = {"image/jpeg","image/png" ,"image/jpg"},
-     *     mimeTypesMessage = "Please upload  jpeg , jpg , png Image" ,
-     *     maxSizeMessage = "maximaum size of image is 2 Mo"
+     *     mimeTypesMessage = "file.valid.type" ,
+     *     maxSizeMessage = "file.size.type"
      * )
      * 
      * @Vich\UploadableField(mapping="user_thumb", fileNameProperty="thumb")
@@ -150,9 +150,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
      */
     private $updateAt;
 
-   
+    /**
+     * @ORM\Column(type="datetime_immutable"  , nullable=true)
+     */
+    private $createdAt;
 
- 
+   
 
     public function getId(): ?int
     {
@@ -223,17 +226,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
         return $this;
     }
 
-    // public function getPlainPassword(): ?string
-    // {
-    //     return $this->plainPassword;
-    // }
-
-    // public function setPlainPassword(?string $plainPassword): self
-    // {
-    //     $this->plainPassword = $plainPassword;
-
-    //     return $this;
-    // }
+ 
 
     /**
      * Returning a salt is only needed, if you are not using a modern
@@ -453,6 +446,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
         $this->thumb,
        
         ) = unserialize($serialized);
+        }
+
+        public function getCreatedAt(): ?\DateTimeImmutable
+        {
+            return $this->createdAt;
+        }
+
+        public function setCreatedAt(\DateTimeImmutable $createdAt): self
+        {
+            $this->createdAt = $createdAt;
+
+            return $this;
         }
 
      

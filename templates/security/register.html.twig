@@ -1,17 +1,20 @@
 {% extends 'admin/baseBack.html.twig' %}
 
+{% block title %} {{'inscrire'|trans}}{% endblock %}
+
+
 {% block content %}
 
 {# {% form_theme formRegister "admin/helpresAdmin/form_them.html.twig" %} #}
   <!-- Page content -->
-  <div class="container mt-8 pb-5">
+  <div class="container  pb-5">
     <div class="row justify-content-center">
       <div class="col-lg-5 col-md-7">
         <div class="card bg-secondary border-0 mb-0">
           <div class="card-body px-lg-5 py-lg-5">
             <div class="text-center text-muted mb-4">
               <h3>
-                Register
+                {{'inscrire'|trans}}
               </h3>
             </div>
 
@@ -30,7 +33,7 @@
                           <div class="input-group-prepend">
                               <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                           </div>
-                          {{ form_widget(formRegister.email , {'attr': {'class': 'form-control' , 'placeholder' : 'Email'}}) }} 
+                          {{ form_widget(formRegister.email , {'attr': {'class': 'form-control' , 'placeholder' :  'user.email'|trans }}) }} 
                       </div> 
                   </div>  
 
@@ -40,7 +43,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        {{ form_widget(formRegister.plainPassword.first, {'attr': {'class': 'form-control' , 'placeholder' : 'Password'}}) }}  
+                        {{ form_widget(formRegister.plainPassword.first, {'attr': {'class': 'form-control' , 'placeholder' : 'passe'|trans }}) }}  
                     </div>    
                   </div> 
 
@@ -50,7 +53,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        {{ form_widget(formRegister.plainPassword.second, {'attr': {'class': 'form-control' , 'placeholder' : 'Confirm Password'}}) }}  
+                        {{ form_widget(formRegister.plainPassword.second, {'attr': {'class': 'form-control' , 'placeholder' : 'confirme.passe'|trans }}) }}  
                     </div>    
                   </div> 
 
@@ -62,7 +65,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                         </div>
-                        {{ form_widget(formRegister.firstName , {'attr': {'class': 'form-control' , 'placeholder' : 'First Name'}}) }}  
+                        {{ form_widget(formRegister.firstName , {'attr': {'class': 'form-control' , 'placeholder' : 'fname'|trans}}) }}  
                     </div>
                   </div>  
 
@@ -72,13 +75,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                         </div>
-                        {{ form_widget(formRegister.lastName , {'attr': {'class': 'form-control' , 'placeholder' : 'Last Name'}}) }}  
+                        {{ form_widget(formRegister.lastName , {'attr': {'class': 'form-control' , 'placeholder' : 'lname'|trans}}) }}  
                       </div>
                   </div>   
 
                 <div class="text-center">     
                   
-                    {{ form_widget(formRegister.Register , {'attr': {'class': 'btn btn-primary my-4'}}) }}  
+                    {{ form_widget(formRegister.Register ,{'label': 'inscrire'|trans } ,{'attr': {'class': 'btn btn-primary my-4'}}) }}  
                   </div>  
 
             {{ form_end(formRegister) }}

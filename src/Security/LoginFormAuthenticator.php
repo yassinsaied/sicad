@@ -19,31 +19,34 @@ use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class LoginFormAuthenticator extends AbstractAuthenticator
 {   
     private $userRepo;
     private $urlGenerator;
+    private  $translator ;
 
-    public function __construct(UserRepository $userRepo , UrlGeneratorInterface $UrlGenerator)
+    public function __construct(UserRepository $userRepo , UrlGeneratorInterface $UrlGenerator , TranslatorInterface $translator)
     {
         $this->userRepo = $userRepo;
         $this->urlGenerator =  $UrlGenerator;
+        $this->translator = $translator;
     }
 
 
     public function supports(Request $request): ?bool
-    {
+    {  
         return ($request->getPathInfo() === '/login' && $request->isMethod('POST'));
     }
 
-    public function authenticate(Request $request): PassportInterface
+    public function authenticate(Request $request)
     {   
-       
+         
         $email = $request->request->get('email');
         $password = $request->request->get('password');
         $csrfToken = $request->request->get('csrf_token');
-      //   dd($csrfToken);  
+     
        
       
         return new Passport(
@@ -51,12 +54,12 @@ class LoginFormAuthenticator extends AbstractAuthenticator
                 $user = $this->userRepo->findOneByEmail($userIdentifier);
                 
                 if (!$user) {
-                    throw new CustomUserMessageAuthenticationException("User Not Found");
+                    throw new CustomUserMessageAuthenticationException($this->translator->trans('user.notfound'));
                 }
 
                 if($user->getIsActivate() !== true){
 
-                    throw new CustomUserMessageAuthenticationException("Your Account is Not activate");
+                    throw new CustomUserMessageAuthenticationException($this->translator->trans('activate.account'));
                 }
 
                 return $user;

@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Form\UserRegistrationType ;
 use App\Entity\User;
 
@@ -15,11 +16,13 @@ class SecurityController extends AbstractController
 {   
 
     private $entityManager ;
+    private  $translator ;
 
-    public function __construct(EntityManagerInterface $entityManagerInterface)
+    public function __construct(EntityManagerInterface $entityManagerInterface , TranslatorInterface $translator )
      {
       
          $this->entityManager = $entityManagerInterface;
+         $this->translator = $translator;
      }
 
        
@@ -50,6 +53,7 @@ class SecurityController extends AbstractController
             $user->setThumb("avatar.png");
             $user->setIsActivate(0);
             $user->setIsDeleted(0);
+            $user->setCreatedAt(new \DateTime());
             $plaintextPassword = $form->get("plainPassword")->getData(); 
             $hashedPassword = $UserPasswordHasher->hashPassword(
                 $user,
@@ -60,7 +64,7 @@ class SecurityController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            $this->addFlash('success', 'We have received your rgistration , Your account will be activated By the administrator soon');
+            $this->addFlash('success', $this->translator->trans('success.register'));
 
         }
         return $this->render('security/register.html.twig' , [

@@ -1,0 +1,21 @@
+req.email : Email is required
+valid.email : This Email is not valid
+email.teken: This email is already taken
+req.password : Password is required
+valid.password: "Password Invalid : Minimum eight characters, at least one uppercase letter, one lowercase letter and one number"
+match.password : The password fields must match.
+req.old.password: Please enter your current password
+valid.old.password : Your Old Password is not valid
+label.new.password:  New password
+label.repeat.password:  Repeat Password
+req.firstname: First Name is required 
+req.lastname: Last Name is required 
+valid.phone : Phone Invalid
+file.valid.type: Please upload  jpeg , jpg , png Image
+file.size.type : maximaum size of image is 2 Mo
+#category
+name.taken: The name of this category is already used
+req.name.cat:  The category name is required
+req.labfr.cat: The category title in French is required
+req.laben.cat: The category title in English is required
+req.labar.cat: The category title in Arabic is required

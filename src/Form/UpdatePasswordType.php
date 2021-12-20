@@ -10,9 +10,18 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UpdatePasswordType extends AbstractType
-{
+{   
+
+    public function __construct(TranslatorInterface $translator)
+    {
+     $this->translator = $translator;
+    }
+ 
+
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -20,11 +29,11 @@ class UpdatePasswordType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter Your password!'
+                        'message' => $this->translator->trans('req.old.password')
                     ]),
                     new Regex([
                         'pattern' => '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/i',
-                        'message' => "Your Old Password is not valid"
+                        'message' => $this->translator->trans('valid.old.password')
                     ])
                  ]   
             ])
@@ -32,16 +41,16 @@ class UpdatePasswordType extends AbstractType
 
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => $this->translator->trans('match.password'),
                 'required' => true,
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Choose a password!'
+                        'message' => $this->translator->trans('req.password')
                     ]),
                     new Regex([
                         'pattern' => '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/i',
-                        'message' => "Password Invalid : Minimum eight characters, at least one uppercase letter, one lowercase letter and one number"
+                        'message' => $this->translator->trans('valid.password')
                     ])
                 ]
             ])

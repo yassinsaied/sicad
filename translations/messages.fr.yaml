@@ -1,0 +1,92 @@
+SICAD: SICAD
+bienvenue: bienvenue
+
+#main menu
+Tableau.debord: Tableau de bord
+add.menu.categ: Ajouter une catégorie
+
+#user Menu
+deconnecter: Se déconnecter
+Mon.profil: Mon profil
+
+# profile form
+maj.profil: Mettre à jour mon profil
+info.user: INFORMATIONS DE L'UTILISATEUR
+user.email: "Adresse e-mail"
+fname: Nom
+lname: Prénom
+info.conatct: INFORMATIONS DE CONTACT
+address: Adresse
+phone: Téléphone
+info.administratif: INFORMATIONS ADMINISTRATIVES
+grade.administratif: Grade administratif
+fonction.administratif: Fonction administrative
+
+# update password form
+reset.passe: Réinitialiser mon mot de passe
+current.passe: Votre mot de passe actuel
+new.passe: Nouveau mot de passe
+Confirme.new.passe: Confirmer le nouveau mot de passe
+
+#login
+connexion: Connexion
+passe: Mot de passe
+identifier: S'identifier
+remember.me: Souvennez de moi.
+forgot.pass: Mot de passe oublié?
+
+#Register
+
+inscrire: S'inscrire
+confirme.passe: Confirmez le mot de passe
+success.register: Nous avons bien reçu votre inscription, votre compte sera activé par l'administrateur prochainement.
+
+#logout
+logout: sortire
+
+#forgot password
+send.pass.email: Envoyer un e-mail de réinitialisation
+title.msg.after.send: E-mail de réinitialisation du mot de passe envoyé
+desc.send.email: Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+msg.after.send: Si un compte correspondant à votre e-mail existe, un e-mail vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe. Ce lien expirera dans 1 heure.<br>Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou réessayer.
+no.pass.token: Aucun token de réinitialisation de mot de passe trouvé dans l'URL ou dans la session.
+prob.validation: Un problème est survenu lors de la validation de votre demande de réinitialisation.
+
+#LoginFormAuthenticator
+user.notfound: Utilisateur non trouvé
+activate.account: Votre compte n'est pas activé
+
+#navBar anonymous
+fb.title: Aimez-nous sur facebook
+insta.title: Suivez-nous sur instagram
+tweeter.title: Suivez-nous sur Twitter
+
+#category crud
+category: catégorie
+add.categ: Ajouter une nouvelle catégorie
+update.categ: Modifier catégorie
+name.categ: Nom unique de catégorie
+title.categ.fr: Titre de catégorie Fr
+title.categ.en: Titre de catégorie En
+title.categ.ar: Titre de catégorie Ar
+sup.categ: catégorie supérieure
+submit.new.categ: Valider la catégorie
+submit.update.categ: Modifier la catégorie
+list.table.lable: Catégorie
+list.table.action: Actions
+list.categ: Liste des catégories
+error.delete: Impossible de supprimer cette catégorie
+title.modale.delete.categ: confirmation de suppression
+message.modale.delete.categ: Voulez-vous vraiment supprimer la catégorie
+
+#datatable
+
+length.menu: Enregistrements par page
+zero.records: Rien trouvé - désolé
+info: Afficher la page
+info.empty: Aucun enregistrement disponible
+info.filtered: filtré de
+search: Recherche
+
+#modale
+close: Close
