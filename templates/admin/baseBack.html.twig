@@ -53,7 +53,8 @@
 
     <!-- Main Menu -->
    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-     {% include 'admin/helpresAdmin/mainMenu.html.twig' %}
+
+     {% include 'admin/helpresAdmin/mainMenu.html.twig' with {'allCategorys' : allCategorys } %}
    
    {% endif %}
 

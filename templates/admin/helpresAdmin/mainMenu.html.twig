@@ -30,19 +30,32 @@
 								</a>
 							</li>
 							<li class="nav-item">
-
 								<a class="nav-link" href="{{path('list_category') }}">
 									<i class="fas fa-list"></i>
 									<span class="nav-link-text">{{'list.categ'|trans}}</span>
 								</a>
-
 							</li>
-
-
 						</ul>
-
-
 					</li>
+{# 
+<pre>
+  {{ dump(allCategorys) }}
+</pre>
+          
+            {% for category in allCategorys %}
+                <li><a href='#'><span>{{ category.name }}</span></a></li>
+                <ul>
+                {% for sub_category in category.children %}
+                    <li><a href='#'><span>{{ sub_category.name }}</span></a></li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+       #}
+
+
+
+
+
 
 
 					<li class="nav-item">
@@ -121,7 +134,7 @@
 							<span class="nav-link-text">Plugins</span>
 						</a>
 					</li>
-				
+
 				</ul>
 			</div>
 		</div>
