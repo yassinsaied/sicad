@@ -92,3 +92,9 @@ table.dataTable > thead .sorting_desc_disabled:after {
 .navbar-nav .sub-category .nav-item a.nav-link i {
   min-width: 22px;
 }
+
+
+.navbar-vertical .navbar-nav .nav-link > i {
+
+  min-width: 30px;
+}

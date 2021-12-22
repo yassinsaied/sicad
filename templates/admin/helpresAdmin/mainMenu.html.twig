@@ -15,6 +15,7 @@
 				class="collapse navbar-collapse" id="sidenav-collapse-main">
 				<!-- Nav items -->
 				<ul class="navbar-nav">
+				 
 					<li class="nav-item">
 						<a class="nav-link" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
 							<i class="ni ni-settings-gear-65"></i>
@@ -37,20 +38,32 @@
 							</li>
 						</ul>
 					</li>
-{# 
-<pre>
-  {{ dump(allCategorys) }}
-</pre>
+       
           
             {% for category in allCategorys %}
-                <li><a href='#'><span>{{ category.name }}</span></a></li>
-                <ul>
-                {% for sub_category in category.children %}
-                    <li><a href='#'><span>{{ sub_category.name }}</span></a></li>
-                {% endfor %}
-                </ul>
+                  {% if category.parent |length == 0 %}		
+               		<li class="nav-item">
+							<a class="nav-link" data-toggle="{{category.children|length > 0 ? 'collapse' : '' }}"  href='{{category.children|length > 0 ? "#" ~ category.name : "#" }}'  role="button" aria-expanded="false" aria-controls="{{ category.name }}">
+								<i class="fas fa-list"></i>
+								<span>{{ category.name }}</span>
+							</a>
+				  	{% endif %} 			
+				{% if category.children|length > 0 %}			
+					<ul class="sub-category pt-2 pb-2 collapse multi-collapse" id="{{category.name}}">
+							{% for sub_category in category.children %}
+							<li class="nav-item">
+                              
+								 <a  class="nav-link" href='#'>
+								    <i class="ni ni-fat-delete"></i>
+								   <span>{{sub_category.name }}</span>
+								  </a>
+								</li>
+							{% endfor %}
+					</ul>
+				{% endif %} 
+				</li>
             {% endfor %}
-       #}
+      
 
 
 

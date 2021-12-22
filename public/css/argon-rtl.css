@@ -6966,6 +6966,14 @@ canvas {
     color: #172b4d !important
 }
 
+/* ar css added */
+
+
+.navbar-vertical.navbar-expand-xs {
+     right: 0;
+     left: inherit;
+}
+
 .scrollbar-inner > .scroll-element.scroll-y {
     top: 0;
     left: 0px;
@@ -6981,7 +6989,14 @@ canvas {
 
 
 .ar-container {
-
     padding-top: 125px !important;
+}
+
+.sidenav.fixed-left + .main-content{
+     margin-left: 0px;
+     margin-right: 250px;
+}
+.navbar-vertical.navbar-expand-xs.fixed-left + .main-content {
+margin-left:0px;
 }
 
