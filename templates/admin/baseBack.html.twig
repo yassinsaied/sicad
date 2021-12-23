@@ -27,9 +27,9 @@
       href="{{ asset('css/argon.css?v=1.2.0') }}"
       href=""
       type="text/css" />
-
+    {% set locale = app.request.getLocale() %}
      
-     {% if app.request.getLocale() == 'ar' %}
+     {% if locale == 'ar' %}
         
       <link rel="stylesheet"
       href="{{ asset('css/argon-rtl.css') }}"
@@ -54,7 +54,7 @@
     <!-- Main Menu -->
    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-     {% include 'admin/helpresAdmin/mainMenu.html.twig' with {'allCategorys' : allCategorys } %}
+     {% include 'admin/helpresAdmin/mainMenu.html.twig' with {'allCategorys' : varGlobals.getAllCategories() , 'locale' : locale} %}
    
    {% endif %}
 

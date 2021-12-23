@@ -51,9 +51,22 @@ class CategoryRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
       }
-    
 
     /*
+
+          public function findAllCategorylableLocal($local)
+      {   $local =='fr'? $labelLocal = "Fr" : ($local  =='en' ? $labelLocal = "En" :  $labelLocal = "Ar");
+        
+        return $this->createQueryBuilder('c' , 'p')
+        ->select('c.label'.$labelLocal.' as labelLocal , c.slug , c.name ')
+        ->leftJoin("c.parent", "p")
+        ->addSelect('parent.label'.$labelLocal.' as labelParentLocal')
+        ->orderBy('c.name', 'ASC')
+        ->getQuery()
+        ->getResult();
+      }
+
+
     public function findOneBySomeField($value): ?Category
     {
         return $this->createQueryBuilder('c')

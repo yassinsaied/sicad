@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -86,7 +87,11 @@ class Category
     protected $parent;
 
 
-
+    public function __construct()
+    {
+      
+        $this->children = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
