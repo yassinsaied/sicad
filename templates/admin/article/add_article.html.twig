@@ -1,0 +1,257 @@
+{% extends 'admin/baseBack.html.twig' %}
+
+{% block title %}{{'add.article'|trans}}{% endblock %}
+
+
+
+
+{% block content %}
+{% form_theme addArticleForm _self %}
+
+    <div class="col-xl-10">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">
+             {{'add.article'|trans}}
+            </h3>
+          </div>
+    
+        </div>
+      </div>
+      <div class="card-body">
+       {{ form_start(addArticleForm, {'attr': {'novalidate': 'novalidate'}}) }}
+              {{ form_errors(addArticleForm) }}
+    
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addArticleForm.titleFr, 'title.article.fr'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addArticleForm.titleFr , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addArticleForm.titleEn, 'title.article.en'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addArticleForm.titleEn , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addArticleForm.titleAr, 'title.article.ar'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addArticleForm.titleAr , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addArticleForm.contentFr, 'content.article.fr'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addArticleForm.contentFr , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+           <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addArticleForm.contentEn, 'content.article.en'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addArticleForm.contentEn , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+         <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addArticleForm.contentAr, 'content.article.ar'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addArticleForm.contentAr , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+       
+
+
+         
+            <div class="row">
+               <div class="col-lg-12">
+                <div class="form-group">
+                 {{ form_label(addArticleForm.category, 'content.article.category'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
+                 {{ form_widget(addArticleForm.category , {'attr': {'class': 'form-control'}}) }} 
+                </div>
+              </div>
+            </div>
+
+        
+{# image upload #}
+           
+  {# <div class="error-file ">
+    <span class="invalid-feedback">
+      <span>
+                    <span class="form-error-icon badge badge-danger text-uppercase">Error</span>
+                    <span class="form-error-message"></span>
+       </span>
+    </span>
+</div> #}
+
+         <div class="col-4 text-left">
+                  <button class="btn btn-sm btn-primary" id="add-Image">add Image</button>
+                </div>
+
+          <div  class="row drop-zone" id="images-article" data-prototype="{{form_row(addArticleForm.images.vars.prototype)|e }}">
+
+           
+          
+              
+         
+         </div>
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+         <div class="pl-lg-4">
+            <div class="row justify-content-center">
+               
+                 {{ form_widget(addArticleForm.addArticle , {'label': 'submit.new.categ'|trans}, {'attr': {'class': 'btn btn-primary my-4'}}) }}  
+                
+            </div>
+        <div>  
+
+         <input type="hidden" value="0" id="counter-widget"/>        
+
+        {{ form_end(addArticleForm) }} 
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}
+
+{% block _article_images_entry_row %}
+<div class="col-lg-12 image-article-widget" id="block_{{id}}">
+	<div class="form-group">
+		{{ form_widget(form) }}
+	</div>
+</div>   
+{% endblock %}
+
+
+
+
+
+{% block javascripts %}
+
+<script>
+
+ $("#add-Image").on('click' , function(e) {
+        e.preventDefault()
+        const numberOfImages = +$("#counter-widget").val();
+        const tmpl = $('#images-article').attr('data-prototype').replace(/__name__/g, numberOfImages);
+     
+         $('#images-article').append(tmpl);
+        
+         $('#article_images_' + numberOfImages + '_imagefile').trigger('click');
+         $('#article_images_' + numberOfImages + '_imagefile').on('change', function() {
+         $('.error-file, .error-file span').removeClass('d-block');
+            readURL(this, numberOfImages);
+        });
+
+         $("#counter-widget").val(numberOfImages + 1);
+         deleteImage()
+        
+  });
+
+
+
+   function readURL(input, idElement) {
+        const arrayExtension = ["image/png", "image/jpeg"]
+            // 
+        const htmlAdImage = '';
+        let valid = true;
+        for (let i = 0; i < input.files.length; i++) {
+            console.log(input.files[i])
+           if (input.files[i].size > 2000000) {
+
+            toggleErrorFile("Error, file too large. The file must weigh less than 2M");
+            input.files[i] = "";
+            valid = false
+        }
+
+        if ($.inArray(input.files[i].type, arrayExtension) === -1) {
+
+            toggleErrorFile("invalid type file");
+            console.log(input.files[i])
+            input.files[i] = null;
+            valid = false;
+
+        }
+
+        if (input.files && input.files[i] && valid) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+
+                $('.drop-zone').append('<div class="frame-image col-xl-4 col-lg-4 col-md-6 col-sm-12"> <div class="card card-stats"> <div class="card-body"> <img  src="' + e.target.result + '"/><div class="d-flex justify-content-end"><a class="remove-image" data-id-element="' + idElement + '"><i class="fas fa-trash-alt"></i></a></div> </div></div></div>');
+            }
+
+            reader.readAsDataURL(input.files[i]);
+        }
+          
+        }
+
+    }
+
+ function toggleErrorFile(message) {
+        $('.error-file .form-error-message p').remove();
+        $('.error-file .invalid-feedback, .error-file span').addClass('d-block');
+        $('.error-file .form-error-message').append('<p>' + message + '</p>');
+
+    }
+
+function deleteImage() {
+
+          $('#images-article').on('click', '.remove-image', function() {
+            $(this).closest('.frame-image').remove();
+            const idInputToDelete = $(this).data('idElement');
+           
+            $('#images-article #block_article_images_' + idInputToDelete).remove();
+        });
+
+    }
+
+
+ function updateCounterWidget() {
+
+        const counterImages = +$('#images-article .form-group').length;
+        $('#counter-widget').val(counterImages)
+
+    }
+
+updateCounterWidget();
+</script>
+
+{% endblock %}
+
+
+
+

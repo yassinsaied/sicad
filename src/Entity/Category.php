@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -86,11 +87,17 @@ class Category
      **/
     protected $parent;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="category")
+     */
+    private $articles;
+
 
     public function __construct()
     {
       
         $this->children = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
 
@@ -216,6 +223,36 @@ class Category
 
     public function __toString() {
         return $this->name;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getCategory() === $this) {
+                $article->setCategory(null);
+            }
+        }
+
+        return $this;
     }
 
 

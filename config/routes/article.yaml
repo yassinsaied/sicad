@@ -1,0 +1,7 @@
+add_article:
+    path: "/adminsicad/add-article/{_locale}"
+    controller: App\Controller\ArticleController::addArticle
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%' 
