@@ -1,137 +1,146 @@
 /* update thumb user */
 
 #OpenImgUpload {
-  position: absolute;
-  left: 55%;
-  top: 40%;
-  z-index: 3000;
-  font-size: 25px;
+    position: absolute;
+    left: 55%;
+    top: 40%;
+    z-index: 3000;
+    font-size: 25px;
 }
 
 #image-thumb {
-  width: 134px;
-  height: 134px;
+    width: 134px;
+    height: 134px;
 }
+
 .avatar img {
-  height: 36px;
+    height: 36px;
 }
 
 .custom-file .custom-file-label,
 .custom-file #profile_thumbFile_file {
-  display: none;
+    display: none;
 }
 
 .anonymous-nav .navbar-brand {
-  font-size: 30px;
+    font-size: 30px;
 }
+
 
 /* data table */
 
 .dataTables_length {
-  float: left;
+    float: left;
 }
 
-table.dataTable > thead .sorting:before,
-table.dataTable > thead .sorting_asc:before,
-table.dataTable > thead .sorting_desc:before,
-table.dataTable > thead .sorting_asc_disabled:before,
-table.dataTable > thead .sorting_desc_disabled:before,
-table.dataTable > thead .sorting:after,
-table.dataTable > thead .sorting_asc:after,
-table.dataTable > thead .sorting_desc:after,
-table.dataTable > thead .sorting_asc_disabled:after,
-table.dataTable > thead .sorting_desc_disabled:after {
-  color: #233dd2;
-  font-size: 16px;
-  font-weight: bolder;
-  margin-right: 5px;
-  cursor: pointer;
+table.dataTable>thead .sorting:before,
+table.dataTable>thead .sorting_asc:before,
+table.dataTable>thead .sorting_desc:before,
+table.dataTable>thead .sorting_asc_disabled:before,
+table.dataTable>thead .sorting_desc_disabled:before,
+table.dataTable>thead .sorting:after,
+table.dataTable>thead .sorting_asc:after,
+table.dataTable>thead .sorting_desc:after,
+table.dataTable>thead .sorting_asc_disabled:after,
+table.dataTable>thead .sorting_desc_disabled:after {
+    color: #233dd2;
+    font-size: 16px;
+    font-weight: bolder;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
 .datatable-action {
-  text-align: center;
+    text-align: center;
 }
+
 .datatable-action a {
-  margin: 15px;
-  font-size: 20px;
-  cursor: pointer;
+    margin: 15px;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .delete-categ i:hover {
-  color: #fb6340;
+    color: #fb6340;
 }
 
 .datatable-update-action i:hover {
-  color: #2dce89;
+    color: #2dce89;
 }
+
 
 /*sub mainmenu */
 
 .navbar-light .navbar-nav .nav-link:hover {
-  color: #5e72e4;
+    color: #5e72e4;
 }
 
-.sub-category{
-     margin-bottom: 10px;
-     background: #f4f5f7;
-  
-     
-}
-.sub-category .nav-item {
-  list-style: none;
+.sub-category {
+    margin-bottom: 10px;
+    background: #f4f5f7;
 }
 
 .sub-category .nav-item {
-  list-style: none;
+    list-style: none;
+}
+
+.sub-category .nav-item {
+    list-style: none;
 }
 
 .navbar-nav .sub-category .nav-item a.nav-link {
-  padding: 5px 0px;
+    padding: 5px 0px;
 }
 
 .navbar-nav .sub-category .nav-item a.nav-link i {
-  min-width: 22px;
+    min-width: 22px;
 }
 
-
-.navbar-vertical .navbar-nav .nav-link > i {
-
-  min-width: 30px;
+.navbar-vertical .navbar-nav .nav-link>i {
+    min-width: 30px;
 }
+
 
 /* drop zone */
- .image-article-widget {
-  display: none;
- }
- .drop-zone{
-   position: relative;
-  flex: 1;
-  display: flex;
-  padding: 20px;
-  border-width: 2;
-  border-radius: 2;
-  border-color: #eeeeee;
-  border-style: dashed;
-  background-color : #fafafa;
-  color: #bdbdbd;
-  outline: none;
-  transition: border .24s ease-in-out ;
-  min-height: 150px;
-  cursor: pointer;
+
+.image-article-widget {
+    display: none;
+}
+
+.drop-zone {
+    position: relative;
+    z-index: 0;
+    flex: 1;
+    display: flex;
+    padding: 20px;
+    border-color: #eeeeee;
+    border-style: dashed;
+    background-color: #fafafa;
+    color: #bdbdbd;
+    transition: border .24s ease-in-out;
+    min-height: 150px;
 }
 
 .drop-zone .card-body img {
-
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 40%;
 }
 
 .message-drop-zon {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, 0);
+    color: #5e72e4;
+}
 
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%, 0);
-  color: #5e72e4;
-  
+.drop-zone .frame-image {
+    position: relative;
+    z-index: 3000;
+}
+
+.drop-zone .frame-image .remove-image {
+    width: 30px;
+    height: 30px;
+    display: block;
 }

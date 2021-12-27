@@ -25,8 +25,7 @@ class ArticleController extends AbstractController
             $images = $form->get('images')->getData();
         
             foreach ($images as $image) {
-                dd($images);
-                 
+                                
                 $image->setArticle($article);
                 $entityManger->persist($image);
            }

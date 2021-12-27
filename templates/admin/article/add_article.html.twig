@@ -103,22 +103,22 @@
        </span>
     </span>
 </div> #}
-
-         <div class="col-4 text-left">
-                  <button class="btn btn-sm btn-primary" id="add-Image">add Image</button>
-                </div>
-
-          <div  class="row drop-zone" id="images-article" data-prototype="{{form_row(addArticleForm.images.vars.prototype)|e }}">
-
-           
-          
-              
-         
-         </div>
+              <div class="drop-zone-container">
 
 
+                  {# <div class="col-4 text-left">
+                            <button class="btn btn-sm btn-primary" id="add-Image">add Image</button>
+                          </div> #}
 
-         
+                    <div  class="row drop-zone" id="images-article" data-prototype="{{form_row(addArticleForm.images.vars.prototype)|e }}">
+                       
+                  
+
+                    </div>
+
+              </div>
+
+                  
 
 
 
@@ -164,22 +164,28 @@
 
 <script>
 
- $("#add-Image").on('click' , function(e) {
-        e.preventDefault()
+ $("#images-article").on('click', function(e) {
+      
         const numberOfImages = +$("#counter-widget").val();
         const tmpl = $('#images-article').attr('data-prototype').replace(/__name__/g, numberOfImages);
      
-         $('#images-article').append(tmpl);
-        
-         $('#article_images_' + numberOfImages + '_imagefile').trigger('click');
+         $('.drop-zone-container').append(tmpl);
+         $('#article_images_' + numberOfImages + '_imagefile').trigger('click' ,  function(e) {
+                e.stopPropagation();
+             
+
+         });
          $('#article_images_' + numberOfImages + '_imagefile').on('change', function() {
          $('.error-file, .error-file span').removeClass('d-block');
             readURL(this, numberOfImages);
         });
 
          $("#counter-widget").val(numberOfImages + 1);
-         deleteImage()
-        
+         
+         deleteImage(e)
+           
+         
+         
   });
 
 
@@ -190,7 +196,7 @@
         const htmlAdImage = '';
         let valid = true;
         for (let i = 0; i < input.files.length; i++) {
-            console.log(input.files[i])
+            
            if (input.files[i].size > 2000000) {
 
             toggleErrorFile("Error, file too large. The file must weigh less than 2M");
@@ -211,7 +217,7 @@
             var reader = new FileReader();
             reader.onload = function(e) {
 
-                $('.drop-zone').append('<div class="frame-image col-xl-4 col-lg-4 col-md-6 col-sm-12"> <div class="card card-stats"> <div class="card-body"> <img  src="' + e.target.result + '"/><div class="d-flex justify-content-end"><a class="remove-image" data-id-element="' + idElement + '"><i class="fas fa-trash-alt"></i></a></div> </div></div></div>');
+                $('#images-article').append('<div class="frame-image col-xl-4 col-lg-4 col-md-6 col-sm-12"> <div class="card card-stats"> <div class="card-body"> <img  src="' + e.target.result + '"/><div class="d-flex justify-content-end"><a class="remove-image"  data-id-element="' + idElement + '"><i class="fas fa-trash-alt"></i></a></div> </div></div></div>');
             }
 
             reader.readAsDataURL(input.files[i]);
@@ -228,16 +234,20 @@
 
     }
 
-function deleteImage() {
-
-          $('#images-article').on('click', '.remove-image', function() {
+    function deleteImage(e) {
+        
+          $('#images-article').on('click', '.remove-image', function(e) {
+            e.stopPropagation()       
             $(this).closest('.frame-image').remove();
             const idInputToDelete = $(this).data('idElement');
-           
             $('#images-article #block_article_images_' + idInputToDelete).remove();
         });
-
     }
+
+
+
+
+
 
 
  function updateCounterWidget() {
