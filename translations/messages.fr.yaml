@@ -78,6 +78,7 @@ list.categ: Liste des catégories
 error.delete: Impossible de supprimer cette catégorie
 title.modale.delete.categ: confirmation de suppression
 message.modale.delete.categ: Voulez-vous vraiment supprimer la catégorie
+placeholder.selecte.parent.categ : Choisissez un parent de la catégorie
 
 #datatable
 

@@ -16,7 +16,7 @@ class ImageType extends AbstractType
           ->add('imagefile' , FileType::class , [
                   'attr'     => [
                     'accept' => 'image/*',
-                    'multiple' => 'multiple'
+                    'label' => false
                 ]
           ])
             

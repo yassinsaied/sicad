@@ -18,7 +18,12 @@ class ArticleController extends AbstractController
     public function addArticle(Request $request)
     {   
         $article = new Article();
-        $form =  $this->createForm(ArticleType::class, $article);
+        $local = $request->getLocale();
+
+        $form =  $this->createForm(ArticleType::class, $article, [
+            'local' => $local
+        ]);
+        
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManger = $this->getDoctrine()->getManager() ; 

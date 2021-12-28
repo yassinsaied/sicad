@@ -107,9 +107,8 @@ table.dataTable>thead .sorting_desc_disabled:after {
     display: none;
 }
 
-.drop-zone {
+#images-article {
     position: relative;
-    z-index: 0;
     flex: 1;
     display: flex;
     padding: 20px;
@@ -121,25 +120,26 @@ table.dataTable>thead .sorting_desc_disabled:after {
     min-height: 150px;
 }
 
-.drop-zone .card-body img {
-    width: 100%;
-    height: 40%;
-}
-
-.message-drop-zon {
+#images-article .msg-dropzone {
     position: absolute;
     left: 50%;
-    top: 30%;
+    top: 40%;
     transform: translate(-50%, 0);
     color: #5e72e4;
 }
 
-.drop-zone .frame-image {
+
+
+#images-article .frame-image {
     position: relative;
-    z-index: 3000;
+  }
+
+#images-article .frame-image .card-body img {
+    width: 100%;
+    height: 40%;
 }
 
-.drop-zone .frame-image .remove-image {
+#images-article .frame-image .remove-image {
     width: 30px;
     height: 30px;
     display: block;

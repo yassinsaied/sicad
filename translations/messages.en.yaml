@@ -76,6 +76,7 @@ list.categ: List of categories
 error.delete: Cannot delete this category
 title.modale.delete.categ: confirmation of deletion
 message.modale.delete.categ: Are you sure you want to delete the category
+placeholder.selecte.parent.categ : Choose an Parent Of Category
 
 #datatable
 lengthMenu: Records per page
@@ -84,3 +85,6 @@ info: Showing page
 infoEmpty: No records available
 infoFiltered: filtered from
 search: Search
+
+
+#article

@@ -8,17 +8,19 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CategoryRepository;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CategoryType extends AbstractType
 {   
     
-    private $entityManager;
+  
+    private  $translator ;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(TranslatorInterface $translator)
     {
-        $this->entityManager = $entityManager;
+     
+        $this->translator = $translator;
     }
 
 
@@ -34,7 +36,7 @@ class CategoryType extends AbstractType
             
             ->add('parent', EntityType::class, [
                     'class' => Category::class,
-                    'placeholder' => 'Choose an option',
+                    'placeholder' => $this->translator->trans('placeholder.selecte.parent.categ'),
                     'required' => false,
                     'query_builder' => function (CategoryRepository $categoryRepository) {
                         return $categoryRepository->findParentCategory();
