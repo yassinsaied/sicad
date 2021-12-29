@@ -76,7 +76,28 @@ list.categ: List of categories
 error.delete: Cannot delete this category
 title.modale.delete.categ: confirmation of deletion
 message.modale.delete.categ: Are you sure you want to delete the category
-placeholder.selecte.parent.categ : Choose an Parent Of Category
+placeholder.selecte.parent.categ: Choose an Parent Of Category
+
+#article
+
+add.article: Add an article
+label.article.fr: French version of article
+label.article.en: English version of article
+label.article.ar: Arabic version of article
+label.article.category: category of article
+title.article.fr: Title in French
+content.article.fr: French content
+title.article.en: Title in English
+content.article.en: English content
+title.article.ar: Title in Arabic
+content.article.ar: Arabic content
+dropzon.msg.article: Drag 'n' drop some files here, or click to select files
+button.add.article: Add article
+tab.article.erroren: The english content is not valid
+tab.article.errorar: The Arabic content is not valid
+label.article.date: Date of Article
+
+
 
 #datatable
 lengthMenu: Records per page
@@ -86,5 +107,6 @@ infoEmpty: No records available
 infoFiltered: filtered from
 search: Search
 
+#modale
+close: Close
 
-#article

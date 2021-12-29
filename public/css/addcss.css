@@ -144,3 +144,20 @@ table.dataTable>thead .sorting_desc_disabled:after {
     height: 30px;
     display: block;
 }
+
+/*add article form*/
+.nav-pills .nav-link {
+ padding-left: 0px;
+ padding-right: 0px;
+
+
+}
+
+.error-tab {
+    color: #fff !important;
+    background-color: #fb6340 !important;
+}
+
+.li-ar .invalid-feedback , .li-en .invalid-feedback {
+    font-size: 70% !important;
+}

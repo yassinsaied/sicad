@@ -36,7 +36,7 @@ var Layout = (function () {
     );
 
     // Store the sidenav state in a cookie session
-   // Cookies.set("sidenav-state", "pinned");
+    // Cookies.set("sidenav-state", "pinned");
   }
 
   function unpinSidenav() {
@@ -46,7 +46,7 @@ var Layout = (function () {
     $("body").find(".backdrop").remove();
 
     // Store the sidenav state in a cookie session
-   // Cookies.set("sidenav-state", "unpinned");
+    // Cookies.set("sidenav-state", "unpinned");
   }
 
   // // Set sidenav state from cookie
@@ -79,56 +79,63 @@ var Layout = (function () {
   //   })
   // }
 
-  $("body").on("click", "[data-action]", function(e) {
+  $("body").on("click", "[data-action]", function (e) {
+    e.preventDefault();
 
-   e.preventDefault();
+    var $this = $(this);
+    var action = $this.data("action");
+    var target = $this.data("target");
 
-      var $this = $(this);
-      var action = $this.data('action');
-      var target = $this.data('target');
+    // Manage actions
 
-      // Manage actions
+    switch (action) {
+      case "sidenav-pin":
+        pinSidenav();
+        break;
 
-      switch (action) {
-          case 'sidenav-pin':
-              pinSidenav();
-          break;
+      case "sidenav-unpin":
+        unpinSidenav();
+        break;
 
-          case 'sidenav-unpin':
-              unpinSidenav();
-          break;
+      case "search-show":
+        target = $this.data("target");
+        $("body")
+          .removeClass("g-navbar-search-show")
+          .addClass("g-navbar-search-showing");
 
-          case 'search-show':
-              target = $this.data('target');
-              $('body').removeClass('g-navbar-search-show').addClass('g-navbar-search-showing');
+        setTimeout(function () {
+          $("body")
+            .removeClass("g-navbar-search-showing")
+            .addClass("g-navbar-search-show");
+        }, 150);
 
-              setTimeout(function() {
-                  $('body').removeClass('g-navbar-search-showing').addClass('g-navbar-search-show');
-              }, 150);
+        setTimeout(function () {
+          $("body").addClass("g-navbar-search-shown");
+        }, 300);
+        break;
 
-              setTimeout(function() {
-                  $('body').addClass('g-navbar-search-shown');
-              }, 300)
-          break;
+      case "search-close":
+        target = $this.data("target");
+        $("body").removeClass("g-navbar-search-shown");
 
-          case 'search-close':
-              target = $this.data('target');
-              $('body').removeClass('g-navbar-search-shown');
+        setTimeout(function () {
+          $("body")
+            .removeClass("g-navbar-search-show")
+            .addClass("g-navbar-search-hiding");
+        }, 150);
 
-              setTimeout(function() {
-                  $('body').removeClass('g-navbar-search-show').addClass('g-navbar-search-hiding');
-              }, 150);
+        setTimeout(function () {
+          $("body")
+            .removeClass("g-navbar-search-hiding")
+            .addClass("g-navbar-search-hidden");
+        }, 300);
 
-              setTimeout(function() {
-                  $('body').removeClass('g-navbar-search-hiding').addClass('g-navbar-search-hidden');
-              }, 300);
-
-              setTimeout(function() {
-                  $('body').removeClass('g-navbar-search-hidden');
-              }, 500);
-          break;
-      }
-  })
+        setTimeout(function () {
+          $("body").removeClass("g-navbar-search-hidden");
+        }, 500);
+        break;
+    }
+  });
 
   // Add sidenav modifier classes on mouse events
 
@@ -588,7 +595,7 @@ var NavbarCollapse = (function () {
 
   var navbar_menu_visible = 0;
 
-  $(".sidenav-toggler").on( 'click' ,function () {
+  $(".sidenav-toggler").on("click", function () {
     if (navbar_menu_visible == 1) {
       $("body").removeClass("nav-open");
       navbar_menu_visible = 0;
@@ -597,7 +604,7 @@ var NavbarCollapse = (function () {
       var div = '<div class="bodyClick"></div>';
       $(div)
         .appendTo("body")
-        .on( 'click' ,function () {
+        .on("click", function () {
           $("body").removeClass("nav-open");
           navbar_menu_visible = 0;
           $(".bodyClick").remove();
@@ -927,7 +934,8 @@ var Datepicker = (function () {
   function init($this) {
     var options = {
       disableTouchKeyboard: true,
-      autoclose: false,
+      autoclose: true,
+      format: 'dd-mm-yyyy'
     };
 
     $this.datepicker(options);
@@ -940,6 +948,9 @@ var Datepicker = (function () {
       init($(this));
     });
   }
+
+  $datepicker
+
 })();
 
 //
@@ -1048,53 +1059,56 @@ var Scrollbar = (function () {
     init();
   }
 
-//upload thumbnail of user 
+  //upload thumbnail of user
 
-
-function display(input) {
-  if (input.files && input.files[0]) {
-     var reader = new FileReader();
-     reader.onload = function(event) {
-        $('#image-thumb').attr('src', event.target.result);
-     }
-     reader.readAsDataURL(input.files[0]);
+  function display(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (event) {
+        $("#image-thumb").attr("src", event.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
   }
-}
 
-
-$('#OpenImgUpload').on('click' ,function(){
-   $('#profile_thumbFile_file').trigger('click'); 
-   
+  $("#OpenImgUpload").on("click", function () {
+    $("#profile_thumbFile_file").trigger("click");
   });
 
- $("#profile_thumbFile_file").on('change', function() {
-  display(this);
-});
+  $("#profile_thumbFile_file").on("change", function () {
+    display(this);
+  });
 
-// data table of category
+  // add article form
 
+  const addInvalidFeedBack = (element) => {
+    
+    let msgError = $(element).data("errorMsg");
+    $(element).append(
+      '<span class="invalid-feedback d-block"><span class="d-block">  <span class="form-error-icon badge badge-danger text-uppercase">Error</span> <span class="form-error-message">' +
+        msgError +
+        "</span></span></span>"
+    );
+  };
 
+  if ($("#tabar .form-error-message").length) {
 
+     $("#tabsar").addClass("error-tab");
+      addInvalidFeedBack(".li-ar");
 
+  }
 
+  if ($("#taben .form-error-message").length) {
 
+      $("#tabsen").addClass("error-tab");
+      addInvalidFeedBack(".li-en");
 
+    }
 
+  $(".nav-wrapper .nav-link").click(function () {
 
+    $(this).removeClass("error-tab").next().remove();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  });
 
 })();

@@ -1,7 +1,10 @@
 /* upload multiple images for add & edit article form */
 jQuery(function () {
-
   $("#images-article").on("click", function (e) {
+    if ($(".msg-dropzone").length) {
+      $(".msg-dropzone").remove();
+    }
+
     const numberOfImages = +$("#counter-widget").val();
     const tmpl = $("#images-article")
       .attr("data-prototype")
@@ -21,9 +24,7 @@ jQuery(function () {
     deleteImage(e);
   });
 
-  
   function readURL(input, idElement) {
-      
     for (let i = 0; i < input.files.length; i++) {
       if (input.files && input.files[i]) {
         var reader = new FileReader();

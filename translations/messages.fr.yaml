@@ -78,7 +78,25 @@ list.categ: Liste des catégories
 error.delete: Impossible de supprimer cette catégorie
 title.modale.delete.categ: confirmation de suppression
 message.modale.delete.categ: Voulez-vous vraiment supprimer la catégorie
-placeholder.selecte.parent.categ : Choisissez un parent de la catégorie
+placeholder.selecte.parent.categ: Choisissez un parent de la catégorie
+
+#article crud
+add.article: Ajouter un article
+label.article.fr: version Français de l'article
+label.article.en: version anglaise de l'article
+label.article.ar: version arabe de l'article
+label.article.category: Catégories de l'article
+title.article.fr: Titre en Français
+content.article.fr: Contenu en Français
+title.article.en: Titre en Anglais
+content.article.en: Contenu en Anglais
+title.article.ar: Titre en Arabe
+content.article.ar: Contenu en Arabe
+dropzon.msg.article: Faites glisser et déposez des fichiers ici, ou cliquez pour sélectionner des fichiers
+button.add.article: Ajouter l'article
+tab.article.erroren: la version anglaise n'est pas valide
+tab.article.errorar: la version arabe n'est pas valide
+label.article.date: Date de l'article
 
 #datatable
 
@@ -90,4 +108,4 @@ info.filtered: filtré de
 search: Recherche
 
 #modale
-close: Close
+close: Fermer

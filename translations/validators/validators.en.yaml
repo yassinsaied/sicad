@@ -19,3 +19,21 @@ req.name.cat:  The category name is required
 req.labfr.cat: The category title in French is required
 req.laben.cat: The category title in English is required
 req.labar.cat: The category title in Arabic is required
+#article
+req.categ.article   : The article must have a category 
+req.titlefr.article : The article must have a title in French 
+min.titlefr.article : The title in French must contain at least %min% characters long 
+max.titlefr.article : The title in French must contain at least %max% characters long 
+req.titleen.article : The article must have a title in English 
+min.titleen.article : The title in English must contain at least %min% characters long 
+max.titleen.article : The title in English must contain at least %max% characters long 
+req.titlear.article : The article must have a title in Arabic 
+min.titlear.article : The title in Arabic must contain at least %min% characters long 
+max.titlear.article : The title in English must contain at least %max% characters long 
+req.contentfr.article: The article must have French content 
+min.contentfr.article: French content must contain at least %min% characters 
+req.contenten.article: The article must have English content 
+min.contenten.article: English content must contain at least %min% characters 
+req.contentar.article: The article must have Arabic content 
+min.contentar.article: Arabic content must contain at least %min% characters 
+

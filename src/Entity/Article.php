@@ -30,36 +30,90 @@ class Article
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(
+     *              message = "req.categ.article"
+     * ) 
      */
     private $category;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *              message = "req.titlefr.article"
+     * )  
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "min.titlefr.article",
+     *      maxMessage = "max.titlefr.article"
+     * ) 
      */
     private $titleFr;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *              message = "req.titleen.article"
+     * )  
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "min.titleen.article",
+     *      maxMessage = "max.titleen.article"
+     * )  
      */
     private $titleEn;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *              message = "req.titlear.article"
+     * )  
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "min.titlear.article",
+     *      maxMessage = "max.titlear.article"
+     * )  
      */
     private $titleAr;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(
+     *              message = "req.contentfr.article"
+     * )  
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "min.contentfr.article",
+     *      
+     * )  
      */
     private $contentFr;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(
+     *              message = "req.contenten.article"
+     * )  
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "min.contenten.article",
+     *      
+     * ) 
      */
     private $contentEn;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(
+     *              message = "req.contentar.article"
+     * )  
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "min.contentar.article",
+     *      
+     * )  
      */
     private $contentAr;
 
