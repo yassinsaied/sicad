@@ -1,0 +1,106 @@
+{% extends 'admin/baseBack.html.twig' %}
+
+{% block title %}
+	{{'list.categ'|trans}}
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}" href="" type="text/css"/>
+	<link rel="stylesheet" href="{{asset('css/responsive.bootstrap4.min.css')}}" href="" type="text/css"/>
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="row align-items-center">
+					<div class="col-12">
+						<h3 class="mb-0">
+							{{'list.article'|trans}}
+						</h3>
+					</div>
+
+				</div>
+			</div>
+			<div class="card-body">
+
+
+				<div class="pl-lg-4">
+					<div class="table-responsive data-table-div" data-length-menu="{{'length.menu'|trans}}" data-zero-records="{{'zero.records'|trans}}" data-info="{{'info'|trans}}" data-info-empty="{{'info.empty'|trans}}" data-info-filtered="{{'info.filtered'|trans}}" data-search="{{'search'|trans}}">
+						<table id="list-article" class="liste-item table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+							<thead>
+								<tr class="thead-light">
+
+									<th class="title-article-th">{{'title.article.titletable'|trans}}</th>
+									<th class="title-categ-th">{{'categ.article.datatable'|trans}}</th>
+									<th class="date-article-th">{{'date.article.datatable'|trans}}</th>
+									<th class="action-article-th">{{'action.article.datatable'|trans}}</th>
+
+
+								</tr>
+							</thead>
+							<tbody>
+								{% for article in listArticle %}
+
+
+									<tr class="row-item">
+
+										<td>
+											<span>{{ article.titleLocal }}</span>
+										</td>
+										<td>{{ article.categotyLocal }}</td>
+										<td>
+
+											{{ article.articleDetails.dateNews |date('d-m-Y')}}
+                      </td>
+
+
+										<td class="datatable-action" id="{{article.articleDetails.slug}}">
+											<a href="{{ path('update_article', {slug: article.articleDetails.slug}) }}" class="datatable-update-action">
+												<i class="fa fa-edit"></i>
+
+											</a>
+											<a href="#"  class="delete-article" data-toggle="modal" data-target="#modal-info" data-title-article="{{article.titleLocal}}" data-delete-error="{{'error.delete' |trans ~ article.titleLocal}}">
+												<i class="fa fa-trash"></i>
+
+											</a>
+											<a href="#"  class="validate-article ">
+												<i class="ni ni-check-bold  {{ article.articleDetails.isValid ? 'valid-article' : 'invalid-article' }}"></i>
+											</a>
+											<a  href="#"  class="publish-article {{ article.articleDetails.isPublished ? 'publish-article' : 'inpublish-article' }}">
+												<i class="ni ni-world-2"></i>
+											</a>
+
+
+										</td>
+
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		{% include 'admin/helpresAdmin/modals.html.twig' with {'title_modal': 'title.modale.delete.article'|trans , 'message_modal' : 'message.modale.delete.article'|trans , "label_button" : 'button.modale.delete.article' } %}
+
+
+	{% endblock %}
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+
+		<script type="text/javascript" src="{{ asset('js/listeAticleAndCateg.js') }}"></script>
+
+
+	{% endblock %}

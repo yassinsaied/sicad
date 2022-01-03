@@ -12,17 +12,20 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\Form\Transformer\DateTransformer;
 
 use App\Entity\Category;
 
 class ArticleType extends AbstractType
 {
     private  $translator;
+    private $transformer ;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator , DateTransformer $transformer)
     {
 
         $this->translator = $translator;
+        $this->transformer = $transformer;
     }
 
 
@@ -70,18 +73,23 @@ class ArticleType extends AbstractType
 
             ->add('images', CollectionType::class, [
                 'label' => false,
+                'required'   => false,
                 'entry_type' => ImageType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
+                'error_bubbling' => false,
+        
 
             ])
 
-            ->add('dateNews' , TextType::class, [
-                            
-            ])
+            ->add('dateNews' , TextType::class)
 
             ->add('addArticle', SubmitType::class);
+
+
+            $builder->get('dateNews')->addModelTransformer($this->transformer);
+           
     }
 
     public function configureOptions(OptionsResolver $resolver): void

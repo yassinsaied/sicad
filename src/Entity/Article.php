@@ -43,7 +43,7 @@ class Article
      * )  
      * @Assert\Length(
      *      min = 2,
-     *      max = 50,
+     *      max = 200,
      *      minMessage = "min.titlefr.article",
      *      maxMessage = "max.titlefr.article"
      * ) 
@@ -57,7 +57,7 @@ class Article
      * )  
      * @Assert\Length(
      *      min = 2,
-     *      max = 50,
+     *      max = 200,
      *      minMessage = "min.titleen.article",
      *      maxMessage = "max.titleen.article"
      * )  
@@ -71,7 +71,7 @@ class Article
      * )  
      * @Assert\Length(
      *      min = 2,
-     *      max = 50,
+     *      max = 200,
      *      minMessage = "min.titlear.article",
      *      maxMessage = "max.titlear.article"
      * )  
@@ -84,7 +84,7 @@ class Article
      *              message = "req.contentfr.article"
      * )  
      * @Assert\Length(
-     *      min = 2,
+     *      min = 10 ,
      *      minMessage = "min.contentfr.article",
      *      
      * )  
@@ -97,7 +97,7 @@ class Article
      *              message = "req.contenten.article"
      * )  
      * @Assert\Length(
-     *      min = 2,
+     *      min = 10,
      *      minMessage = "min.contenten.article",
      *      
      * ) 
@@ -110,7 +110,7 @@ class Article
      *              message = "req.contentar.article"
      * )  
      * @Assert\Length(
-     *      min = 2,
+     *      min = 10,
      *      minMessage = "min.contentar.article",
      *      
      * )  
@@ -138,8 +138,11 @@ class Article
     private $isPublished;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="article" , cascade={"persist" , "remove"})
+     * @Assert\Valid
      */
+     
+     
     private $images;
 
     /**
@@ -148,7 +151,7 @@ class Article
     private $slug;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateNews;
 

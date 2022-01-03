@@ -935,7 +935,7 @@ var Datepicker = (function () {
     var options = {
       disableTouchKeyboard: true,
       autoclose: true,
-      format: 'dd-mm-yyyy'
+      format: 'yyyy-mm-dd'
     };
 
     $this.datepicker(options);

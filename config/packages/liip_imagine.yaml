@@ -22,6 +22,10 @@ liip_imagine:
         user_thumb_nav:
             quality: 70
             filters:
-                thumbnail: { size: [36, 36], mode: inset }         
+                thumbnail: { size: [36, 36], mode: inset } 
+
+        article_thumb_uploaded:
+            quality: 70
+                           
            
             

@@ -20,20 +20,20 @@ req.labar.cat: Le titre de catégorie en Arab est obligatoire
 #article
 req.categ.article: l'article doit avoir une catégorie 
 req.titlefr.article : l'article doit avoir un titre en français
-min.titlefr.article: le titre en français doit comporter au moins %min% caractères
-max.titlefr.article: le titre en français  doit comporter au moins %max% caractères
+min.titlefr.article: le titre en français doit comporter au moins 2 caractères
+max.titlefr.article: le titre en français  doit comporter au moins 200 caractères
 req.titleen.article: l'article doit avoir un titre en anglais
-min.titleen.article: le titre en anglais doit comporter au moins %min% caractères
-max.titleen.article: le titre en anglais  doit comporter au moins %max% caractères
+min.titleen.article: le titre en anglais doit comporter au moins 2 caractères
+max.titleen.article: le titre en anglais  doit comporter au moins 200 caractères
 req.titlear.article: l'article doit avoir un titre en arabe
-min.titlear.article: le titre en arabe doit comporter au moins %min% caractères
-max.titlear.article: le titre en arabe  doit comporter au moins %max% caractères
+min.titlear.article: le titre en arabe doit comporter au moins 2 caractères
+max.titlear.article: le titre en arabe  doit comporter au moins 200 caractères
 req.contentfr.article: l'article doit avoir un contenu en français 
-min.contentfr.article: le contenu en français doit comporter au moins %min% caractères
+min.contentfr.article: le contenu en français doit comporter au moins 10 caractères
 req.contenten.article: l'article doit avoir un contenu en anglais 
-min.contenten.article: le contenu en anglais doit comporter au moins %min% caractères
+min.contenten.article: le contenu en anglais doit comporter au moins 10 caractères
 req.contentar.article: l'article doit avoir un contenu en arabe 
-min.contentar.article: le contenu en arabe doit comporter au moins %min% caractères
+min.contentar.article: le contenu en arabe doit comporter au moins 10 caractères
 
 
 

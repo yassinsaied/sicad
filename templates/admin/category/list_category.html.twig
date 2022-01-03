@@ -3,6 +3,7 @@
 {% block title %}{{'list.categ'|trans}}{% endblock %}
 {% block stylesheets %}
  <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}" href="" type="text/css" />
+ <link rel="stylesheet" href="{{asset('css/responsive.bootstrap4.min.css')}}" href="" type="text/css" />
 {% endblock %}
 
 
@@ -27,7 +28,7 @@
     
           <div class="pl-lg-4">
          <div class="table-responsive data-table-div" data-length-menu="{{'length.menu'|trans}}" data-zero-records="{{'zero.records'|trans}}" data-info="{{'info'|trans}}" data-info-empty="{{'info.empty'|trans}}" data-info-filtered="{{'info.filtered'|trans}}" data-search="{{'search'|trans}}">
-              <table id="list-category" class="table table-striped table-bordered" style="width:100%">
+              <table id="list-category" class="liste-item table table-striped table-bordered" style="width:100%">
         <thead>
             <tr class="thead-light">
                
@@ -75,7 +76,7 @@
 
 
 
- {% include 'admin/helpresAdmin/modals.html.twig' with {'title_modal': 'title.modale.delete.categ'|trans , 'message_modal' : 'message.modale.delete.categ'|trans , "label_button" : 'title.modale.delete.categ' } %}
+ {% include 'admin/helpresAdmin/modals.html.twig' with {'title_modal': 'title.modale.delete.categ'|trans , 'message_modal' : 'message.modale.delete.categ'|trans , "label_button" : 'button.modale.delete.categ' } %}
 
 
 
@@ -92,9 +93,11 @@
 {% endblock %}
 
   {% block javascripts %}
-  <script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/listCategory.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/listeAticleAndCateg.js') }}"></script>
   
 
   

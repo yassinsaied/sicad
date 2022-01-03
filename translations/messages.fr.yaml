@@ -3,7 +3,11 @@ bienvenue: bienvenue
 
 #main menu
 Tableau.debord: Tableau de bord
+menu.category: catégories
 add.menu.categ: Ajouter une catégorie
+menu.article: Articles
+add.menu.article: Ajouter un article
+
 
 #user Menu
 deconnecter: Se déconnecter
@@ -62,7 +66,7 @@ insta.title: Suivez-nous sur instagram
 tweeter.title: Suivez-nous sur Twitter
 
 #category crud
-category: catégorie
+
 add.categ: Ajouter une nouvelle catégorie
 update.categ: Modifier catégorie
 name.categ: Nom unique de catégorie
@@ -75,13 +79,15 @@ submit.update.categ: Modifier la catégorie
 list.table.lable: Catégorie
 list.table.action: Actions
 list.categ: Liste des catégories
-error.delete: Impossible de supprimer cette catégorie
-title.modale.delete.categ: confirmation de suppression
+error.delete: Impossible de supprimer cette catégorie 
+title.modale.delete.categ: confirmation de suppression de la catégorie
 message.modale.delete.categ: Voulez-vous vraiment supprimer la catégorie
 placeholder.selecte.parent.categ: Choisissez un parent de la catégorie
+button.modale.delete.categ: supprimer la catégorie
 
 #article crud
 add.article: Ajouter un article
+list.article : Liste des articles
 label.article.fr: version Français de l'article
 label.article.en: version anglaise de l'article
 label.article.ar: version arabe de l'article
@@ -97,6 +103,16 @@ button.add.article: Ajouter l'article
 tab.article.erroren: la version anglaise n'est pas valide
 tab.article.errorar: la version arabe n'est pas valide
 label.article.date: Date de l'article
+date.ivalid.article: la format de date de l'article est ivalide
+title.article.titletable : Titres des articles
+categ.article.datatable : Catégories des articles
+date.article.datatable : Date
+action.article.datatable: Actions
+title.modale.delete.article: confirmation de suppression de l'article
+message.modale.delete.article : Voulez-vous vraiment supprimer l'article 
+button.modale.delete.article: supprimer l'article 
+submit.new.article: ajouter L'article
+submit.update.article : Modifier L'article
 
 #datatable
 

@@ -19,6 +19,35 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+
+
+    
+    /**
+      * @return Category[] Returns an array of Category  objects  width label of local
+    */
+    
+      public function findAllArticleByTitleLocal($local)
+      {   $local =='fr'? $labelLocal = "Fr" : ($local  =='en' ? $labelLocal = "En" :  $labelLocal = "Ar");
+        
+        return $this->createQueryBuilder('a')
+        ->select('a as articleDetails')
+        ->addselect('a.title'.$labelLocal.' as titleLocal')
+        ->Join("a.category", "category")
+        ->addSelect('category.label'.$labelLocal.' as categotyLocal')
+        ->orderBy('a.dateNews', 'DESC')
+        ->getQuery()
+        ->getResult();
+      }
+
+
+
+
+
+
+
+
+
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

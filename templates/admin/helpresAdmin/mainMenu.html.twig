@@ -48,14 +48,15 @@
 				<!-- Nav items -->
 				<ul class="navbar-nav">
 
+                    <!-- category config  -->
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="collapse"  href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+						<a class="nav-link" data-toggle="collapse"  href="#categoryConfig" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
 							<i class="ni ni-settings-gear-65"></i>
-							<span class="nav-link-text">{{'category'|trans}}</span>
+							<span class="nav-link-text">{{'menu.category'|trans}}</span>
 						</a>
 
 
-						<ul class="sub-category pt-2 pb-2 collapse multi-collapse" id="multiCollapseExample1">
+						<ul class="sub-category pt-2 pb-2 collapse multi-collapse" id="categoryConfig">
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('add_category') }}">
 									<i class="fas fa-plus-circle"></i>
@@ -71,6 +72,32 @@
 						</ul>
 					</li>
 
+                    <!-- article config  -->
+                    <li class="nav-item">
+						<a class="nav-link" data-toggle="collapse"  href="#articlConfig" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+							<i class="ni ni-settings"></i>
+							<span class="nav-link-text">{{'menu.article'|trans}}</span>
+						</a>
+
+
+						<ul class="sub-category pt-2 pb-2 collapse multi-collapse" id="articlConfig">
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('add_article') }}">
+									<i class="fas fa-plus-circle"></i>
+									<span class="nav-link-text">{{'add.menu.article'|trans}}</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('list_article') }}">
+									<i class="fas fa-list"></i>
+									<span class="nav-link-text">{{'list.article'|trans}}</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+
+<div class="border-top my-3"></div>
 
 					{% for category in allCategorys %}
 						{% if category.parent |length == 0 %}

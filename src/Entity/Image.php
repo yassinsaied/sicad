@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 
@@ -32,7 +32,15 @@ class Image
      */
     private $name;
 
-
+   /**
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     mimeTypes = {"image/jpeg","image/png" ,"image/jpg"},
+     *     mimeTypesMessage = "file.valid.type" ,
+     *     maxSizeMessage = "file.size.type"
+     * )
+     * 
+     */
     private $imageFile;
 
 
@@ -66,9 +74,7 @@ class Image
         return $this;
     }
 
-    public function __toString() {
-        return $this->name;
-    }
+  
 
     /* upload function and variable */
 
@@ -138,8 +144,12 @@ class Image
     }
 
 
+    
 
-
+    // public function __toString() {
+    //     return $this->name;
+    // }
+    
 
 
 

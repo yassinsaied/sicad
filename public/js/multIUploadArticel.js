@@ -55,7 +55,7 @@ jQuery(function () {
   }
 
   function updateCounterWidget() {
-    const counterImages = +$("#images-article .form-group").length;
+    const counterImages = +$(".drop-zone-container .image-article-widget").length;
     $("#counter-widget").val(counterImages);
   }
 
