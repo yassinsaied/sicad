@@ -4,8 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -31,7 +29,7 @@ class CategoryRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.parent is NULL')
-            ->orderBy('c.name', 'ASC')
+            ->orderBy('c.slug', 'ASC')
                 ;
     }
 
@@ -44,10 +42,10 @@ class CategoryRepository extends ServiceEntityRepository
       {   $local =='fr'? $labelLocal = "Fr" : ($local  =='en' ? $labelLocal = "En" :  $labelLocal = "Ar");
         
         return $this->createQueryBuilder('c')
-        ->select('c.label'.$labelLocal.' as labelLocal , c.slug , c.name ')
+        ->select('c.label'.$labelLocal.' as labelLocal , c.slug')
         ->leftJoin("c.parent", "parent")
         ->addSelect('parent.label'.$labelLocal.' as labelParentLocal')
-        ->orderBy('c.name', 'ASC')
+        ->orderBy('c.slug', 'ASC')
         ->getQuery()
         ->getResult();
       }

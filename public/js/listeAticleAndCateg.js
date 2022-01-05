@@ -1,6 +1,5 @@
 jQuery(function () {
-
-//data table of article and Category
+  //data table of article and Category
 
   lengthMenu = $(".data-table-div").data("lengthMenu");
   zeroRecords = $(".data-table-div").data("zeroRecords");
@@ -9,7 +8,34 @@ jQuery(function () {
   infoFiltered = $(".data-table-div").data("infoFiltered");
   search = $(".data-table-div").data("search");
 
-  $(".liste-item").DataTable({
+  // Custom filtering function which will search data in column four between two values
+  $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+    var min_date = $("#min").val();
+    console.log(min_date);
+    var min = new Date(String(min_date));
+    console.log(min);
+    var max_date = $("max").val();
+    var max = new Date(String(max_date));
+
+    var startDate = new Date(data[2]);
+
+    //window.confirm(startDate);
+    if (!min_date && !max_date) {
+      return true;
+    }
+    if (!min_date && startDate <= max) {
+      return true;
+    }
+    if (!max_date && startDate >= min) {
+      return true;
+    }
+    if (startDate <= max && startDate >= min) {
+      return true;
+    }
+    return false;
+  });
+
+  var table = $(".liste-item").DataTable({
     columnDefs: [
       { width: 200, targets: "title-article-th" },
       { width: 100, targets: "title-categ-th" },
@@ -34,31 +60,32 @@ jQuery(function () {
     },
   });
 
-
+  $("#min, #max").on("change", function () {
+    table.draw();
+  });
   //category actions
 
   $("#list-category").on("click", ".delete-categ", function () {
-    category = $(this).attr("id");
-    slug = $(this).data("slugCateg");
+    slugCateg = $(this).data("slugCateg");
     labelCateg = $(this).data("labelLocal");
     $(".modal .confirm").addClass("confirme-delete");
     $(".var-message").text(labelCateg);
 
     $(".confirme-delete").on("click", function (e) {
       $.ajax({
-        url: "/adminsicad/delete-category/" + slug,
-        data: { category: category },
+        url: "/adminsicad/delete-category/" + slugCateg,
+        data: { slugCateg: slugCateg },
         method: "post",
         success: function (data) {
           if (data === "done") {
-            $("#" + category)
+            $("#" + slugCateg)
               .closest(".row-categ")
               .remove();
           }
         },
         error: function (data) {
           if (data === "impossible") {
-            messageError = $("#" + category).data("deleteError");
+            messageError = $("#" + slugCateg).data("deleteError");
             $(".modal-message").text(messageError);
             $("#modal-default").modal("show");
           }
@@ -66,8 +93,6 @@ jQuery(function () {
       });
     });
   });
-
-
 
   //Article actions
 
@@ -102,7 +127,6 @@ jQuery(function () {
     });
   });
 
-
   //Validate Article from datatable
 
   $("#list-article").on("click", ".validate-article", function (e) {
@@ -114,7 +138,6 @@ jQuery(function () {
       data: { slugArticle: slugArticle },
       method: "post",
       success: function (data) {
-       
         if (data === true) {
           $("#" + slugArticle + "  .validate-article i")
             .removeClass("invalid-article")
@@ -132,8 +155,7 @@ jQuery(function () {
     });
   });
 
-
-   //Publish Article from datatable
+  //Publish Article from datatable
   $("#list-article").on("click", ".publish-article", function (e) {
     e.preventDefault();
     slugArticle = $(this).parent(".datatable-action").attr("id");
@@ -143,7 +165,6 @@ jQuery(function () {
       data: { slugArticle: slugArticle },
       method: "post",
       success: function (data) {
-      
         if (data === true) {
           $("#" + slugArticle + "  .publish-article i")
             .removeClass("inpublish-article")
@@ -160,6 +181,4 @@ jQuery(function () {
       },
     });
   });
-
-  
 });

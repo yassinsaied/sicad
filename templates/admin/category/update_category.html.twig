@@ -8,7 +8,7 @@
 {% block content %}
 
 
-    <div class="col-xl-8">
+  <div class="col-xl-8">
     <div class="card">
       <div class="card-header">
         <div class="row align-items-center">
@@ -25,15 +25,7 @@
               {{ form_errors(updateCategoryForm) }}
     
           <div class="pl-lg-4">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="form-group">
-                 {{ form_label(updateCategoryForm.name, 'name.categ'|trans, {'label_attr': {'class': 'form-control-label'}}) }}
-                 {{ form_widget(updateCategoryForm.name , {'attr': {'class': 'form-control'}}) }} 
-                </div>
-              </div>
-            </div>
-
+         
             <div class="row">
                <div class="col-lg-12">
                 <div class="form-group">
@@ -89,27 +81,5 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{# 
-   {{ form_start(addCategoryForm) }}
-      {{ form_widget(addCategoryForm) }}
-   {{ form_end(addCategoryForm) }} #}
 
 {% endblock %}

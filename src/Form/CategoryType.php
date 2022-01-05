@@ -29,7 +29,7 @@ class CategoryType extends AbstractType
 
      
         $builder
-            ->add('name')
+         
             ->add('labelFr')
             ->add('labelEn')
             ->add('labelAr')

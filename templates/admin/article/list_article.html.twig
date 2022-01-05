@@ -30,6 +30,45 @@
 
 
 				<div class="pl-lg-4">
+
+
+					<div class="row">
+						<div class="form-group  pl-4 align-items-center">
+							<label class="form-control-label mr-2" for="input-last-name">
+								{{'date.search.datatable'|trans}}
+							</label>
+							<div class="input-daterange datepicker row align-items-center">
+
+								<div class="col-6 d-flex">
+									<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text">
+													<i class="ni ni-calendar-grid-58"></i>
+												</span>
+											</div>
+											<input class="form-control" placeholder="{{'startdate.search.datatable' |trans}}" type="text" id="min" name="min">
+										</div>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text">
+													<i class="ni ni-calendar-grid-58"></i>
+												</span>
+											</div>
+											<input class="form-control" placeholder="{{'endDate.search.datatable' |trans}}" type="text" id="max" name="max">
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+
 					<div class="table-responsive data-table-div" data-length-menu="{{'length.menu'|trans}}" data-zero-records="{{'zero.records'|trans}}" data-info="{{'info'|trans}}" data-info-empty="{{'info.empty'|trans}}" data-info-filtered="{{'info.filtered'|trans}}" data-search="{{'search'|trans}}">
 						<table id="list-article" class="liste-item table table-striped table-bordered dt-responsive nowrap" style="width:100%">
 							<thead>
@@ -55,8 +94,8 @@
 										<td>{{ article.categotyLocal }}</td>
 										<td>
 
-											{{ article.articleDetails.dateNews |date('d-m-Y')}}
-                      </td>
+											{{ article.articleDetails.dateNews |date('Y-m-d')}}
+										</td>
 
 
 										<td class="datatable-action" id="{{article.articleDetails.slug}}">
@@ -64,14 +103,14 @@
 												<i class="fa fa-edit"></i>
 
 											</a>
-											<a href="#"  class="delete-article" data-toggle="modal" data-target="#modal-info" data-title-article="{{article.titleLocal}}" data-delete-error="{{'error.delete' |trans ~ article.titleLocal}}">
+											<a href="#" class="delete-article" data-toggle="modal" data-target="#modal-info" data-title-article="{{article.titleLocal}}" data-delete-error="{{'error.delete' |trans ~ article.titleLocal}}">
 												<i class="fa fa-trash"></i>
 
 											</a>
-											<a href="#"  class="validate-article ">
+											<a href="#" class="validate-article ">
 												<i class="ni ni-check-bold  {{ article.articleDetails.isValid ? 'valid-article' : 'invalid-article' }}"></i>
 											</a>
-											<a  href="#"  class="publish-article {{ article.articleDetails.isPublished ? 'publish-article' : 'inpublish-article' }}">
+											<a href="#" class="publish-article {{ article.articleDetails.isPublished ? 'publish-article' : 'inpublish-article' }}">
 												<i class="ni ni-world-2"></i>
 											</a>
 
@@ -99,6 +138,8 @@
 		<script type="text/javascript" src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+		<!--<script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/dataTables.dateTime.min.js') }}"></script>!-->
 
 		<script type="text/javascript" src="{{ asset('js/listeAticleAndCateg.js') }}"></script>
 

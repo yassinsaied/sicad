@@ -12,8 +12,8 @@ valid.phone : Numéro de téléphone invalide
 file.valid.type: Veuillez télécharger une image jpeg, jpg, png
 file.size.type : la taille maximale de l'image est de 2 Mo
 #category
-req.name.cat: Le Nom de catégorie est obligatoire
-name.taken: Ce nom de categorie est déjà utilisés
+
+slug.taken: Ce nom de categorie est déjà utilisés
 req.labfr.cat: Le titre de catégorie en francais est obligatoire
 req.laben.cat: Le titre de catégorie en anglais est obligatoire
 req.labar.cat: Le titre de catégorie en Arab est obligatoire

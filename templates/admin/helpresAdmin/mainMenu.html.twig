@@ -102,7 +102,7 @@
 					{% for category in allCategorys %}
 						{% if category.parent |length == 0 %}
 							<li class="nav-item">
-								<a class="nav-link" data-toggle="{{category.children|length > 0 ? 'collapse' : '' }}" href='{{category.children|length > 0 ? "#" ~ category.name : "#" }}' role="button" aria-expanded="false" aria-controls="{{ category.name }}">
+								<a class="nav-link" data-toggle="{{category.children|length > 0 ? 'collapse' : '' }}" href='{{category.children|length > 0 ? "#" ~ category.slug : "#" }}' role="button" aria-expanded="false" aria-controls="{{ category.slug }}">
 									<i class="fas fa-list"></i>
 
 									{% if locale =='fr' %}
@@ -120,7 +120,7 @@
 								</a>
 							{% endif %}
 							{% if category.children|length > 0 %}
-								<ul class="sub-category pt-2 pb-2 collapse multi-collapse" id="{{category.name}}">
+								<ul class="sub-category pt-2 pb-2 collapse multi-collapse" id="{{category.slug}}">
 									{% for sub_category in category.children %}
 										<li class="nav-item">
 

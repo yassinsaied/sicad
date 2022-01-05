@@ -15,8 +15,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(
- *     fields={"name"},
- *     message="name.taken"
+ *     fields={"slug"},
+ *     message="slug.taken"
  * )
  */
 class Category
@@ -28,13 +28,7 @@ class Category
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(
-     *              message = "req.name.cat"
-     * )
-     */
-    private $name;
+ 
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -106,17 +100,7 @@ class Category
         return $this->id;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {   $slugger = new AsciiSlugger();
-        $slug = $slugger->slug($name, '_');
-        $this->name = $slug;
-        return $this;
-    }
+  
 
     public function getLabelFr(): ?string
     {
@@ -192,7 +176,7 @@ class Category
     {  
        $slugger = new AsciiSlugger();
        $randomStr = substr(md5(mt_rand()), 0, 4);;
-       $slug = $slugger->slug($this->getName()."-".$randomStr);
+       $slug = $slugger->slug($this->getLabelFr()."-".$randomStr);
        $this->setSlug($slug);
     
     }
@@ -222,7 +206,7 @@ class Category
     }
 
     public function __toString() {
-        return $this->name;
+        return $this->labelFr;
     }
 
     /**

@@ -69,7 +69,7 @@ tweeter.title: Suivez-nous sur Twitter
 
 add.categ: Ajouter une nouvelle catégorie
 update.categ: Modifier catégorie
-name.categ: Nom unique de catégorie
+
 title.categ.fr: Titre de catégorie Fr
 title.categ.en: Titre de catégorie En
 title.categ.ar: Titre de catégorie Ar
@@ -122,6 +122,9 @@ info: Afficher la page
 info.empty: Aucun enregistrement disponible
 info.filtered: filtré de
 search: Recherche
+date.search.datatable : Recherche par date
+startdate.search.datatable: Date début
+endDate.search.datatable: Date fin
 
 #modale
 close: Fermer

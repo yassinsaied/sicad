@@ -80,9 +80,9 @@ class CategoryController extends AbstractController
         if ($request->isXmlHttpRequest()) {
          
             $entityManager =  $this->getDoctrine();
-            $category = $request->get('category');
+            $category = $request->get('slugCateg');
             $category = $entityManager->getRepository(Category::class)->findOneBy([
-                'name' =>  $category 
+                'slug' =>  $category 
             ]);
 
             if($category) {

@@ -121,6 +121,10 @@ info: Showing page
 info.empty: No records available
 info.eiltered: filtered from
 search: Search
+date.search.datatable : Search By Date
+startdate.search.datatable: Start Date
+endDate.search.datatable: End Date
+
 
 #modale
 close: Close

@@ -14,8 +14,7 @@ valid.phone : Phone Invalid
 file.valid.type: Please upload  jpeg , jpg , png Image
 file.size.type : maximaum size of image is 2 Mo
 #category
-name.taken: The name of this category is already used
-req.name.cat:  The category name is required
+slug.taken: The name of this category is already used
 req.labfr.cat: The category title in French is required
 req.laben.cat: The category title in English is required
 req.labar.cat: The category title in Arabic is required
