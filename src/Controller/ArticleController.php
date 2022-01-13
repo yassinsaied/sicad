@@ -54,10 +54,36 @@ class ArticleController extends AbstractController
        
         $local = $request->getLocale();
 
+      
+         $filesOnUpload = $request->files->get('article');
+         $i = 0;
+         
+        
+
+
+
+
+
+
         $form =  $this->createForm(ArticleType::class, $article, [
             'local' => $local
         ]);
       
+        dd($filesOnUpload['images']);
+        foreach ($filesOnUpload['images'] as  $imagefiles) {
+            $imageFileDetails = $imagefiles[$i];
+           
+             if($imageFileDetails == null) {
+                dd($imagefiles[$i]);
+
+             $form->get('images')->setData( $imageFileDetails );
+             }
+             $i++;
+            
+         }
+
+       // dd($form->get('images'));
+        
        
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

@@ -138,7 +138,7 @@ class Article
     private $isPublished;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="article" , cascade={"persist" , "remove"})
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="article" , cascade={"persist"}, orphanRemoval=true)
      * @Assert\Valid
      */
      
