@@ -48,6 +48,7 @@ jQuery(function () {
       e.stopPropagation();
       $(this).closest(".frame-image").remove();
       const idInputToDelete = $(this).data("idElement");
+      console.log(idInputToDelete)
       $(
         ".drop-zone-container #block_article_images_" + idInputToDelete
       ).remove();

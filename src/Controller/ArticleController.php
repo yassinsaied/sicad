@@ -51,18 +51,19 @@ class ArticleController extends AbstractController
 
     public function updateArticle(Request $request, Article $article)
     {
-
+       
         $local = $request->getLocale();
 
         $form =  $this->createForm(ArticleType::class, $article, [
             'local' => $local
         ]);
-
+      
+       
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManger = $this->getDoctrine()->getManager();
             $images = $form->get('images')->getData();
-
+           
             foreach ($images as $image) {
                 if ($image->getImageFile() != null) {
                     $image->setArticle($article);

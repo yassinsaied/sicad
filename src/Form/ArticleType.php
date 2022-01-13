@@ -79,6 +79,7 @@ class ArticleType extends AbstractType
                 'allow_delete' => true,
                 'prototype' => true,
                 'error_bubbling' => false,
+                'delete_empty'=>true,
         
 
             ])
