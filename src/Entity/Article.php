@@ -138,7 +138,7 @@ class Article
     private $isPublished;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="article" , cascade={"persist" , "remove"})
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="article" , cascade={"persist"}, orphanRemoval=true)
      * @Assert\Valid
      */
      
@@ -182,7 +182,7 @@ class Article
         return $this->titleFr;
     }
 
-    public function setTitleFr(string $titleFr): self
+    public function setTitleFr(?string $titleFr): self
     {
         $this->titleFr = $titleFr;
 
@@ -194,7 +194,7 @@ class Article
         return $this->titleEn;
     }
 
-    public function setTitleEn(string $titleEn): self
+    public function setTitleEn(?string $titleEn): self
     {
         $this->titleEn = $titleEn;
 
@@ -206,7 +206,7 @@ class Article
         return $this->titleAr;
     }
 
-    public function setTitleAr(string $titleAr): self
+    public function setTitleAr(?string $titleAr): self
     {
         $this->titleAr = $titleAr;
 
@@ -218,7 +218,7 @@ class Article
         return $this->contentFr;
     }
 
-    public function setContentFr(string $contentFr): self
+    public function setContentFr(?string $contentFr): self
     {
         $this->contentFr = $contentFr;
 
@@ -230,7 +230,7 @@ class Article
         return $this->contentEn;
     }
 
-    public function setContentEn(string $contentEn): self
+    public function setContentEn(?string $contentEn): self
     {
         $this->contentEn = $contentEn;
 
@@ -242,7 +242,7 @@ class Article
         return $this->contentAr;
     }
 
-    public function setContentAr(string $contentAr): self
+    public function setContentAr(?string $contentAr): self
     {
         $this->contentAr = $contentAr;
 
