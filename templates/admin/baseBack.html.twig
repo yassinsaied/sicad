@@ -54,7 +54,7 @@
     <!-- Main Menu -->
    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-     {% include 'admin/helpresAdmin/mainMenu.html.twig' with {'allCategorys' : varGlobals.getAllCategories() , 'locale' : locale} %}
+     {% include 'admin/helpresAdmin/mainMenu.html.twig'%}
    
    {% endif %}
 

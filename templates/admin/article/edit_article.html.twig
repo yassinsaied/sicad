@@ -28,7 +28,7 @@
 				<div class="card-body">
 
 
-					{{ form_start(editArticleForm, {'attr': {'novalidate': 'novalidate'}}) }}
+					{{ form_start(editArticleForm, {'attr': {'novalidate': 'novalidate' , 'enctype' : "multipart/form-data" }}) }}
 
 					<div class="row">
 						<div class="col-lg-12">
@@ -161,19 +161,16 @@
 
 								<div class="row drop-zone" id="images-article" data-prototype="{{form_row(editArticleForm.images.vars.prototype)|e }}">
 									{% if editArticleForm.images.vars.value is not null %}
-<<<<<<< HEAD
                                           {% set idarticleImage = 0 %}
 												{% for image in editArticleForm.images.vars.value %}
+                                                    {% if image.name is not null %}
+													
+												        <div class="frame-image col-xl-4 col-lg-4 col-md-6 col-sm-12"> <div class="card card-stats"> <div class="card-body"> <img  src="{{asset('uploads/articles/'~ image.name) | imagine_filter('article_thumb_uploaded') }}"/><div class="d-flex justify-content-end"><a class="remove-image"  data-id-element="{{idarticleImage}}"><i class="fas fa-trash-alt"></i></a></div> </div></div></div>
 
-												<div class="frame-image col-xl-4 col-lg-4 col-md-6 col-sm-12"> <div class="card card-stats"> <div class="card-body"> <img  src="{{asset('uploads/articles/'~ image.name) | imagine_filter('article_thumb_uploaded') }}"/><div class="d-flex justify-content-end"><a class="remove-image"  data-id-element="{{idarticleImage}}"><i class="fas fa-trash-alt"></i></a></div> </div></div></div>	
-                                 {% set idarticleImage = idarticleImage + 1 %}
-=======
-                                      {% set idarticleImage = 0 %}
-												{% for image in editArticleForm.images.vars.value %}
+                                                     {% set idarticleImage = idarticleImage + 1 %}
 
-												<div class="frame-image col-xl-4 col-lg-4 col-md-6 col-sm-12"> <div class="card card-stats"> <div class="card-body"> <img  src="{{asset('uploads/articles/'~ image.name) | imagine_filter('article_thumb_uploaded') }}"/><div class="d-flex justify-content-end"><a class="remove-image"  data-id-element="{{idarticleImage}}"><i class="fas fa-trash-alt"></i></a></div> </div></div></div>	
-                                                    {% set idarticleImage = idarticleImage + 1 %}
->>>>>>> 413d2db55aa1b7777403779674f9f617312b0653
+													{% endif %}
+													
 												{% endfor %}
 
 										{% else %}

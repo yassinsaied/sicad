@@ -51,45 +51,17 @@ class ArticleController extends AbstractController
 
     public function updateArticle(Request $request, Article $article)
     {
-       
+
         $local = $request->getLocale();
-
-      
-         $filesOnUpload = $request->files->get('article');
-         $i = 0;
-         
-        
-
-
-
-
-
-
         $form =  $this->createForm(ArticleType::class, $article, [
             'local' => $local
         ]);
-      
-        dd($filesOnUpload['images']);
-        foreach ($filesOnUpload['images'] as  $imagefiles) {
-            $imageFileDetails = $imagefiles[$i];
-           
-             if($imageFileDetails == null) {
-                dd($imagefiles[$i]);
 
-             $form->get('images')->setData( $imageFileDetails );
-             }
-             $i++;
-            
-         }
-
-       // dd($form->get('images'));
-        
-       
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManger = $this->getDoctrine()->getManager();
             $images = $form->get('images')->getData();
-           
+
             foreach ($images as $image) {
                 if ($image->getImageFile() != null) {
                     $image->setArticle($article);
@@ -164,7 +136,7 @@ class ArticleController extends AbstractController
                     $valid = true;
                 } else {
                     $article->setIsValid(false);
-                    $valid = false ;
+                    $valid = false;
                 }
                 $entityManager->getManager()->flush();
                 return new JsonResponse($valid);
@@ -193,7 +165,7 @@ class ArticleController extends AbstractController
                     $valid = true;
                 } else {
                     $article->setIsPublished(false);
-                    $valid = false ;
+                    $valid = false;
                 }
                 $entityManager->getManager()->flush();
                 return new JsonResponse($valid);
@@ -202,9 +174,4 @@ class ArticleController extends AbstractController
 
         return new JsonResponse('impossible');
     }
-
-
-
-
-
 }

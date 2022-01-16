@@ -68,9 +68,9 @@ tweeter.title: Follow us on Twitter
 category: Category
 add.categ: Add new category
 name.categ: Unique category name
-title.categ.fr: Category title FR
-title.categ.en: Category title En
-title.categ.ar: Category title Ar
+title.categ.fr: Title Category in French
+title.categ.en: Title Category in English
+title.categ.ar: Title Category in Arabic
 sup.categ: superior category
 submit.new.categ: Validate category
 list.table.lable: Category
@@ -79,7 +79,7 @@ list.categ: List of categories
 error.delete: Cannot delete this category
 title.modale.delete.categ: confirmation of deletion of category
 message.modale.delete.categ: Are you sure you want to delete this category
-placeholder.selecte.parent.categ: Choose an Parent Of Category
+placeholder.selecte.parent.categ: Choose a parent category
 button.modale.delete.categ: Delete this Category
 
 #article
@@ -111,6 +111,7 @@ message.modale.delete.article : Are you sure you want to delete this article
 button.modale.delete.article: Delete this Article 
 submit.new.article: Add new article
 submit.update.article : Update article
+selectList.category.placeholder : Choose category
 
 
 

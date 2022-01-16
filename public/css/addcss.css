@@ -149,7 +149,7 @@ table.dataTable>thead .sorting_desc_disabled:after {
 
 #images-article .frame-image {
     position: relative;
-    z-index: 1000;
+   
     padding-bottom: 30px;
   }
 
@@ -165,9 +165,11 @@ table.dataTable>thead .sorting_desc_disabled:after {
     font-size: 20px;
     cursor: pointer;
     position: absolute;
-    right: 0;
-    bottom: 0;
-
+    left: 50%;
+    margin-left: -50px;
+    top: 50%;
+    margin-top: -50px;
+    z-index: 1000;
 }
 
 .title{
@@ -201,4 +203,11 @@ table.dataTable>thead .sorting_desc_disabled:after {
     font-size: 70% !important;
 }
 
-/*toast*/
+/*nav brand main menu*/
+
+.navbar-vertical .navbar-brand {
+    display: block;
+    margin: 10px 10px 20px 10px;
+    font-size: 1.8rem;
+    color: #5e72e4;
+}

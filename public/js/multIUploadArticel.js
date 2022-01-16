@@ -1,6 +1,8 @@
 /* upload multiple images for add & edit article form */
 jQuery(function () {
-  $("#images-article").on("click", function (e) {
+  /* function for add image in drop zone */
+
+  $(".drop-zone-container").on("click", "#images-article", function () {
     if ($(".msg-dropzone").length) {
       $(".msg-dropzone").remove();
     }
@@ -20,9 +22,12 @@ jQuery(function () {
     );
 
     $("#counter-widget").val(numberOfImages + 1);
-
-    deleteImage(e);
   });
+
+  deleteImage();
+  updateCounterWidget();
+
+  /* function for read path of image and sho it in drop zone */
 
   function readURL(input, idElement) {
     for (let i = 0; i < input.files.length; i++) {
@@ -42,23 +47,30 @@ jQuery(function () {
       }
     }
   }
+/* function to delete image from drop zone */
 
   function deleteImage(e) {
-    $("#images-article").on("click", ".remove-image", function (e) {
-      e.stopPropagation();
-      $(this).closest(".frame-image").remove();
-      const idInputToDelete = $(this).data("idElement");
-      console.log(idInputToDelete)
-      $(
-        ".drop-zone-container #block_article_images_" + idInputToDelete
-      ).remove();
-    });
+    $(".drop-zone-container").on(
+      "click",
+      ".frame-image .remove-image",
+      function (e) {
+        e.stopPropagation();
+        $(this).closest(".frame-image").remove();
+        const idInputToDelete = $(this).data("idElement");
+
+        $(
+          `.drop-zone-container #block_article_images_${idInputToDelete}`
+        ).remove();
+      }
+    );
   }
+/* function used to update number of image in drop zone*/
 
   function updateCounterWidget() {
-    const counterImages = +$(".drop-zone-container .image-article-widget").length;
+    const counterImages = +$(".drop-zone-container .image-article-widget")
+      .length;
     $("#counter-widget").val(counterImages);
   }
 
-  updateCounterWidget();
+ 
 });

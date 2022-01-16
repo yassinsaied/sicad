@@ -86,6 +86,11 @@ class Category
      */
     private $articles;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActivated;
+
 
     public function __construct()
     {
@@ -172,12 +177,13 @@ class Category
      * @ORM\PrePersist
      */
 
-    public function makeSlugUser()
+    public function defaultCategoryConfig()
     {  
        $slugger = new AsciiSlugger();
        $randomStr = substr(md5(mt_rand()), 0, 4);;
        $slug = $slugger->slug($this->getLabelFr()."-".$randomStr);
        $this->setSlug($slug);
+       $this->setIsActivated(false);
     
     }
 
@@ -235,6 +241,18 @@ class Category
                 $article->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsActivated(): ?bool
+    {
+        return $this->isActivated;
+    }
+
+    public function setIsActivated(bool $isActivated): self
+    {
+        $this->isActivated = $isActivated;
 
         return $this;
     }

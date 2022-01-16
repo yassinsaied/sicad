@@ -29,6 +29,8 @@ class CategoryRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.parent is NULL')
+            ->andWhere('c.isActivated = :isActivated')
+            ->setParameter('isActivated', true)
             ->orderBy('c.slug', 'ASC')
                 ;
     }

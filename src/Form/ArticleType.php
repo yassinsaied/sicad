@@ -19,13 +19,19 @@ use App\Entity\Category;
 class ArticleType extends AbstractType
 {
     private  $translator;
-    private $transformer ;
+    private  $transformer ;
 
     public function __construct(TranslatorInterface $translator , DateTransformer $transformer)
     {
 
         $this->translator = $translator;
         $this->transformer = $transformer;
+    }
+
+    public function getLabelCategory(Category $category ,array $options) 
+    {
+        $options['local'] == 'fr' ? $labelLocal = $category->getLabelFr() : ($options['local'] == 'en' ? $labelLocal = $category->getLabelEn() :  $labelLocal = $category->getLabelAr());
+        return $labelLocal ;
     }
 
 
@@ -64,10 +70,17 @@ class ArticleType extends AbstractType
             
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'placeholder' => $this->translator->trans('placeholder.selecte.parent.categ'),
+                'placeholder' => $this->translator->trans('selectList.category.placeholder'),
                 'choice_label' => function (Category $category) use ($options) {
-                    $options['local'] == 'fr' ? $labelLocal = $category->getLabelFr() : ($options['local'] == 'en' ? $labelLocal = $category->getLabelEn() :  $labelLocal = $category->getLabelAr());
-                    return $labelLocal;
+                    return  $this->getLabelCategory($category , $options) ;
+                },
+
+                'group_by' => function($choice) use ($options){
+                    if ($choice->getParent() != null ) {
+                        return  $this->getLabelCategory($choice->getParent() , $options);
+                    }
+
+                  
                 },
             ])
 

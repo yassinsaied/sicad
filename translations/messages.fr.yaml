@@ -70,9 +70,9 @@ tweeter.title: Suivez-nous sur Twitter
 add.categ: Ajouter une nouvelle catégorie
 update.categ: Modifier catégorie
 
-title.categ.fr: Titre de catégorie Fr
-title.categ.en: Titre de catégorie En
-title.categ.ar: Titre de catégorie Ar
+title.categ.fr: Titre de catégorie en français
+title.categ.en: Titre de catégorie en Anglais
+title.categ.ar: Titre de catégorie en Arabe
 sup.categ: catégorie supérieure
 submit.new.categ: Valider la catégorie
 submit.update.categ: Modifier la catégorie
@@ -82,7 +82,7 @@ list.categ: Liste des catégories
 error.delete: Impossible de supprimer cette catégorie 
 title.modale.delete.categ: confirmation de suppression de la catégorie
 message.modale.delete.categ: Voulez-vous vraiment supprimer la catégorie
-placeholder.selecte.parent.categ: Choisissez un parent de la catégorie
+placeholder.selecte.parent.categ: Choisissez une catégorie parente 
 button.modale.delete.categ: supprimer la catégorie
 
 #article crud
@@ -113,6 +113,7 @@ message.modale.delete.article : Voulez-vous vraiment supprimer l'article
 button.modale.delete.article: supprimer l'article 
 submit.new.article: ajouter L'article
 submit.update.article : Modifier L'article
+selectList.category.placeholder : Choisissez la catégorie
 
 #datatable
 
