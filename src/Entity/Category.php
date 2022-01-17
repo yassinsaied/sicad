@@ -89,7 +89,7 @@ class Category
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActivated;
+    private $isActivate;
 
 
     public function __construct()
@@ -165,11 +165,11 @@ class Category
         return $this->parent;
     }
 
-    public function setParent($parent)
+    public function setParent($parent) :?self 
     {
-        if ($parent->getParent() == NULL) {
+       
             $this->parent = $parent;
-        }
+        return $this;
     }
 
 
@@ -183,7 +183,7 @@ class Category
        $randomStr = substr(md5(mt_rand()), 0, 4);;
        $slug = $slugger->slug($this->getLabelFr()."-".$randomStr);
        $this->setSlug($slug);
-       $this->setIsActivated(false);
+       $this->setIsActivate(false);
     
     }
 
@@ -207,6 +207,19 @@ class Category
     public function setLabelAr(string $labelAr): self
     {
         $this->labelAr = $labelAr;
+
+        return $this;
+    }
+
+    
+    public function getIsActivate(): ?bool
+    {
+        return $this->isActivate;
+    }
+
+    public function setIsActivate(bool $isActivate): self
+    {
+        $this->isActivate = $isActivate;
 
         return $this;
     }
@@ -245,17 +258,6 @@ class Category
         return $this;
     }
 
-    public function getIsActivated(): ?bool
-    {
-        return $this->isActivated;
-    }
-
-    public function setIsActivated(bool $isActivated): self
-    {
-        $this->isActivated = $isActivated;
-
-        return $this;
-    }
 
 
 }

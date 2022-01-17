@@ -47,13 +47,13 @@
                 <td>{{ categ.labelLocal }}</td>
                 <td>{{ categ.labelParentLocal }}</td>
                 
-                <td class="datatable-action">
+                <td class="datatable-action" id="{{categ.slug}}">
                 <a href="{{ path('update_category', {slug: categ.slug}) }}" class="datatable-update-action">
                 <i class="fa fa-edit"></i>
    
                 </a>
-                 <a href="#" id="{{categ.slug}}" class="delete-categ" data-toggle="modal" data-target="#modal-info" data-slug-categ="{{categ.slug}}" data-label-local="{{categ.labelLocal}}" data-delete-error="{{'error.delete' |trans ~  categ.labelLocal}}" >
-                <i class="fa fa-trash"></i>
+                 <a href="#" class="activate-action-categ">
+                <i class="ni ni-check-bold  {{ categ.isActivate ? 'activate-categ' : 'desactivate-categ' }}"></i>
                
                 </a>
                  </td>

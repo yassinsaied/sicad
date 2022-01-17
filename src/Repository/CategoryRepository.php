@@ -29,8 +29,8 @@ class CategoryRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.parent is NULL')
-            ->andWhere('c.isActivated = :isActivated')
-            ->setParameter('isActivated', true)
+            ->andWhere('c.isActivate = :isActivate')
+            ->setParameter('isActivate', true)
             ->orderBy('c.slug', 'ASC')
                 ;
     }
@@ -44,7 +44,7 @@ class CategoryRepository extends ServiceEntityRepository
       {   $local =='fr'? $labelLocal = "Fr" : ($local  =='en' ? $labelLocal = "En" :  $labelLocal = "Ar");
         
         return $this->createQueryBuilder('c')
-        ->select('c.label'.$labelLocal.' as labelLocal , c.slug')
+        ->select('c.label'.$labelLocal.' as labelLocal , c.slug , c.isActivate')
         ->leftJoin("c.parent", "parent")
         ->addSelect('parent.label'.$labelLocal.' as labelParentLocal')
         ->orderBy('c.slug', 'ASC')

@@ -66,23 +66,25 @@ table.dataTable>thead .sorting_desc_disabled:after {
 
 .datatable-action a i {
     margin: 5px;
-   
 }
 
-.delete-categ i:hover , .delete-article i:hover{
+.delete-categ i:hover,
+.delete-article i:hover {
     color: #fb6340;
 }
 
-.datatable-update-action i:hover , .valid-article ,.publish-article  {
+.datatable-update-action i:hover,
+.valid-article,
+.publish-article,
+.activate-categ {
     color: #2dce89;
 }
 
-.invalid-article , .inpublish-article {
-
-   color: #525f7f; 
+.invalid-article,
+.inpublish-article,
+.desactivate-categ {
+    color: #525f7f;
 }
-
-
 
 
 /*sub mainmenu */
@@ -119,7 +121,8 @@ table.dataTable>thead .sorting_desc_disabled:after {
 
 /* drop zone */
 
-.image-article-widget ,#article_images_errors {
+.image-article-widget,
+#article_images_errors {
     display: none;
 }
 
@@ -145,13 +148,10 @@ table.dataTable>thead .sorting_desc_disabled:after {
     color: #5e72e4;
 }
 
-
-
 #images-article .frame-image {
     position: relative;
-   
     padding-bottom: 30px;
-  }
+}
 
 #images-article .frame-image .card-body img {
     width: 100%;
@@ -172,26 +172,24 @@ table.dataTable>thead .sorting_desc_disabled:after {
     z-index: 1000;
 }
 
-.title{
+.title {
     display: block;
     width: 200px;
-    word-wrap:break-word;
-   
+    word-wrap: break-word;
 }
 
- .table td, .table th {
+.table td,
+.table th {
     font-size: .8125rem;
-    white-space: normal !important; 
+    white-space: normal !important;
 }
-
 
 
 /*add article form*/
+
 .nav-pills .nav-link {
- padding-left: 0px;
- padding-right: 0px;
-
-
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .error-tab {
@@ -199,9 +197,11 @@ table.dataTable>thead .sorting_desc_disabled:after {
     background-color: #fb6340 !important;
 }
 
-.li-ar .invalid-feedback , .li-en .invalid-feedback {
+.li-ar .invalid-feedback,
+.li-en .invalid-feedback {
     font-size: 70% !important;
 }
+
 
 /*nav brand main menu*/
 

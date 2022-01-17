@@ -22,9 +22,9 @@ list_category:
     requirements:
         _locale: '%app_locales%'
 
-delete_category:
-    path: "/adminsicad/delete-category/{slug}/{_locale}"
-    controller: App\Controller\CategoryController::deleteCategory
+activate_category:
+    path: "/adminsicad/activate-category/{slug}/{_locale}"
+    controller: App\Controller\CategoryController::activateCategory
     defaults:
         _locale: '%locale%'
     requirements:
