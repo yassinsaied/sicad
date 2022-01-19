@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Article;
+use App\Entity\Category;
 use App\Entity\Image;
 use App\Form\ArticleType;
 
@@ -83,11 +84,19 @@ class ArticleController extends AbstractController
     public function listArticle(Request $request)
     {
         $locale = $request->getLocale();;
+        $array_categ = [] ;
+        $listArticles = $this->getDoctrine()->getRepository(Article::class)->findAllArticleByTitleLocal($locale);
+        $listCateg = $this->getDoctrine()->getRepository(Category::class)->getArrayOfAllCategory($locale);
+       
+        foreach ($listCateg as  $categ) {
+            $array_categ.array_push($categ['labelLocal']);
+        }
 
-        $listCateg = $this->getDoctrine()->getRepository(Article::class)->findAllArticleByTitleLocal($locale);
+       
         return $this->render('admin/article/list_article.html.twig', [
 
-            'listArticle' => $listCateg
+            'listArticle' => $listArticles,
+            'listGateg' => $array_categ
         ]);
     }
 

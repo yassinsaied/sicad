@@ -29,8 +29,8 @@ class CategoryRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.parent is NULL')
-            ->andWhere('c.isActivated = :isActivated')
-            ->setParameter('isActivated', true)
+            ->andWhere('c.isActivate = :isActivate')
+            ->setParameter('isActivate', true)
             ->orderBy('c.slug', 'ASC')
                 ;
     }
@@ -44,7 +44,7 @@ class CategoryRepository extends ServiceEntityRepository
       {   $local =='fr'? $labelLocal = "Fr" : ($local  =='en' ? $labelLocal = "En" :  $labelLocal = "Ar");
         
         return $this->createQueryBuilder('c')
-        ->select('c.label'.$labelLocal.' as labelLocal , c.slug')
+        ->select('c.label'.$labelLocal.' as labelLocal , c.slug , c.isActivate')
         ->leftJoin("c.parent", "parent")
         ->addSelect('parent.label'.$labelLocal.' as labelParentLocal')
         ->orderBy('c.slug', 'ASC')
@@ -52,29 +52,15 @@ class CategoryRepository extends ServiceEntityRepository
         ->getResult();
       }
 
-    /*
 
-          public function findAllCategorylableLocal($local)
+      public function getArrayOfAllCategory($local)
       {   $local =='fr'? $labelLocal = "Fr" : ($local  =='en' ? $labelLocal = "En" :  $labelLocal = "Ar");
         
-        return $this->createQueryBuilder('c' , 'p')
-        ->select('c.label'.$labelLocal.' as labelLocal , c.slug , c.name ')
-        ->leftJoin("c.parent", "p")
-        ->addSelect('parent.label'.$labelLocal.' as labelParentLocal')
-        ->orderBy('c.name', 'ASC')
+        return $this->createQueryBuilder('c')
+        ->select('c.label'.$labelLocal.' as labelLocal')
+        ->orderBy('c.slug', 'ASC')
         ->getQuery()
-        ->getResult();
+        ->getArrayResult();
       }
 
-
-    public function findOneBySomeField($value): ?Category
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

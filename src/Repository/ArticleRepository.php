@@ -34,8 +34,8 @@ class ArticleRepository extends ServiceEntityRepository
         ->addselect('a.title'.$labelLocal.' as titleLocal')
         ->Join("a.category", "category")
         ->addSelect('category.label'.$labelLocal.' as categotyLocal')
-        ->andWhere('category.isActivated = :isActivated')
-        ->setParameter('isActivated', true)
+        ->andWhere('category.isActivate = :isActivate')
+        ->setParameter('isActivate', true)
         ->orderBy('a.dateNews', 'DESC')
         ->getQuery()
         ->getResult();
