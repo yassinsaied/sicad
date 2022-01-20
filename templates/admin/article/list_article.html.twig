@@ -18,12 +18,16 @@
 		<div class="card">
 			<div class="card-header">
 				<div class="row align-items-center">
-					<div class="col-12">
+					<div class="col-md-10">
 						<h3 class="mb-0">
 							{{'list.article'|trans}}
 						</h3>
 					</div>
-
+                    <div class="col-md-2 ml-auto d-flex justify-content-end">
+							<button class="btn btn-icon btn-primary" type="button" data-toggle="collapse" data-target="#filter-article" aria-expanded="false" aria-controls="filter-article">
+								<span class="btn-inner--icon"><i class="ni ni-atom"></i></span>
+							</button>
+					</div>
 				</div>
 			</div>
 			<div class="card-body">
@@ -32,7 +36,8 @@
 				<div class="pl-lg-4">
 
 
-					<div class="row">
+					<div class="row collapse" id="filter-article">
+				
 						<div class="form-group  pl-4 align-items-center">
 							<label class="form-control-label mr-2" for="input-last-name">
 								{{'date.search.datatable'|trans}}
@@ -70,12 +75,25 @@
 							<label class="form-control-label mr-2" for="input-last-name">
 								{{'date.search.datatable'|trans}}
 							</label>
-							<select class="form-control form-control-md">
-								<option>Small select</option>
+							<select id="filter-categ" class="form-control form-control-md">
+								<option value=''>sélectionner une catégorie</option>
+								{% for categ in listGateg %}
+									<option value="{{categ}}">{{categ}}</option>
+								{% endfor %}
+
 							</select>
+                            
 
 
 						</div>
+
+                        	<div class="form-group  pl-4 pt-5 align-items-center">
+						  
+                               <button type="reset" id="reset-filer" class="btn btn-primary btn-sm">Reset the Filter </button>
+
+					     	</div>
+
+               
 					</div>
 
 					<div class="table-responsive data-table-div" data-length-menu="{{'length.menu'|trans}}" data-zero-records="{{'zero.records'|trans}}" data-info="{{'info'|trans}}" data-info-empty="{{'info.empty'|trans}}" data-info-filtered="{{'info.filtered'|trans}}" data-search="{{'search'|trans}}">
@@ -149,7 +167,7 @@
 		<script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
 		<!--<script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
-						<script type="text/javascript" src="{{ asset('js/dataTables.dateTime.min.js') }}"></script>!-->
+								<script type="text/javascript" src="{{ asset('js/dataTables.dateTime.min.js') }}"></script>!-->
 
 		<script type="text/javascript" src="{{ asset('js/listeAticleAndCateg.js') }}"></script>
 

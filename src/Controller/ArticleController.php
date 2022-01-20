@@ -84,12 +84,13 @@ class ArticleController extends AbstractController
     public function listArticle(Request $request)
     {
         $locale = $request->getLocale();;
-        $array_categ = [] ;
+        $array_categ = [];
         $listArticles = $this->getDoctrine()->getRepository(Article::class)->findAllArticleByTitleLocal($locale);
         $listCateg = $this->getDoctrine()->getRepository(Category::class)->getArrayOfAllCategory($locale);
        
         foreach ($listCateg as  $categ) {
-            $array_categ.array_push($categ['labelLocal']);
+      
+            array_push($array_categ ,$categ['labelLocal']);
         }
 
        
