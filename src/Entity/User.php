@@ -25,14 +25,14 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * )
  * @Vich\Uploadable
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serializable 
+class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-     
+
     private $id;
 
     /**
@@ -105,7 +105,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
      * )
      */
     private $tel;
- 
+
     /**
      * @ORM\Column(type="boolean")
      */
@@ -151,11 +151,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
     private $updateAt;
 
     /**
-     * @ORM\Column(type="datetime_immutable"  , nullable=true)
+     * @ORM\Column(type="datetime"  , nullable=true)
      */
     private $createdAt;
 
-   
+
 
     public function getId(): ?int
     {
@@ -199,7 +199,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_AUTHEUR';
 
         return array_unique($roles);
     }
@@ -226,7 +226,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
         return $this;
     }
 
- 
+
 
     /**
      * Returning a salt is only needed, if you are not using a modern
@@ -248,8 +248,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
         // $this->plainPassword = null;
     }
 
-    
-    
+
+
     public function getIsActivate(): ?bool
     {
         return $this->isActivate;
@@ -305,8 +305,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
     {
         return $this->slug;
     }
-    
-   
+
+
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
@@ -350,120 +350,112 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,\Serial
         return $this;
     }
 
-    
 
-     /**
+
+    /**
      * @ORM\PrePersist
      */
 
-      public function makeSlugUser()
-     {  
+    public function makeSlugUser()
+    {
         $slugger = new AsciiSlugger();
         $randomStr = substr(md5(mt_rand()), 0, 4);;
-        $slug = $slugger->slug($this->getFirstName()."-".$this->getLastName()."-".$randomStr);
+        $slug = $slugger->slug($this->getFirstName() . "-" . $this->getLastName() . "-" . $randomStr);
         $this->setSlug($slug);
-      
-     }
+    }
 
 
 
-      public function setThumbFile(?File $thumbFile = null): void
-      {
-           $this->thumbFile = $thumbFile;
+    public function setThumbFile(?File $thumbFile = null): void
+    {
+        $this->thumbFile = $thumbFile;
 
-          if (null !== $thumbFile) {
+        if (null !== $thumbFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTime();
         }
-       
-      }
-  
-      public function getThumbFile(): ?File
-      {
-          return $this->thumbFile;
-      }
+    }
 
-      
-      public function getUpdateAt(): ?\DateTimeInterface
-      {
-          return $this->updateAt;
-      }
+    public function getThumbFile(): ?File
+    {
+        return $this->thumbFile;
+    }
 
-      public function setUpdateAt(?\DateTimeInterface $updateAt): self
-      {
-          $this->updateAt = $updateAt;
 
-          return $this;
-      }
+    public function getUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->updateAt;
+    }
 
+    public function setUpdateAt(?\DateTimeInterface $updateAt): self
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
 
 
 
-      public function getGradJobe(): ?string
-      {
-          return $this->gradJobe;
-      }
 
-      public function setGradJobe(?string $gradJobe): self
-      {
-          $this->gradJobe = $gradJobe;
+    public function getGradJobe(): ?string
+    {
+        return $this->gradJobe;
+    }
 
-          return $this;
-      }
+    public function setGradJobe(?string $gradJobe): self
+    {
+        $this->gradJobe = $gradJobe;
 
-      public function getFunctionJob(): ?string
-      {
-          return $this->functionJob;
-      }
+        return $this;
+    }
 
-      public function setFunctionJob(?string $functionJob): self
-      {
-          $this->functionJob = $functionJob;
+    public function getFunctionJob(): ?string
+    {
+        return $this->functionJob;
+    }
 
-          return $this;
-      }
+    public function setFunctionJob(?string $functionJob): self
+    {
+        $this->functionJob = $functionJob;
+
+        return $this;
+    }
 
 
-      public function serialize() {
+    public function serialize()
+    {
 
         return serialize(array(
-        $this->id,
-        $this->email,
-        $this->password,
-        $this->thumb,
-      
+            $this->id,
+            $this->email,
+            $this->password,
+            $this->thumb,
+
         ));
-        
-        }
-        
-        public function unserialize($serialized) {
-        
-        list (
-        $this->id,
-        $this->email,
-        $this->password,
-        $this->thumb,
-       
+    }
+
+    public function unserialize($serialized)
+    {
+
+        list(
+            $this->id,
+            $this->email,
+            $this->password,
+            $this->thumb,
+
         ) = unserialize($serialized);
-        }
+    }
 
-        public function getCreatedAt(): ?\DateTimeImmutable
-        {
-            return $this->createdAt;
-        }
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
 
-        public function setCreatedAt(\DateTimeImmutable $createdAt): self
-        {
-            $this->createdAt = $createdAt;
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
-            return $this;
-        }
-
-     
-
-     
-
-
-   
+        return $this;
+    }
 }

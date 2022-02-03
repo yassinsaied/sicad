@@ -1,67 +1,60 @@
 security:
-    enable_authenticator_manager: true
-    
-    role_hierarchy:
-        ROLE_ADMIN: ['ROLE_AUTHEUR' ,'ROLE_USER']
-        ROLE_AUTHEUR: ['ROLE_USER']
-   
+  enable_authenticator_manager: true
 
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
-    password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-        App\Entity\User:
-            algorithm: auto
+  role_hierarchy:
+    ROLE_VALIDATOR: ["ROLE_AUTHEUR"]
+    ROLE_ADMIN: ["ROLE_VALIDATOR"]
 
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
-    providers:
-        # used to reload user from session & other features (e.g. switch_user)
-        user_database:
-            entity:
-                class: App\Entity\User
-                property: email
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+  # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: "auto"
+    App\Entity\User:
+      algorithm: auto
 
-        # admin_sicad:
-        #     lazy: true
-        #     anonymous: false
-        #     pattern: ^/adminsicad
-        #     provider: user_database     
+  # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+  providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    user_database:
+      entity:
+        class: App\Entity\User
+        property: email
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
 
-        main:
-            lazy: true
-            pattern: ^/
-            #user_checker: App\Security\UserChecker
-            provider: user_database
-            form_login:
-                login_path: login
-                check_path: login
-            logout:
-                path: logout
+    # admin_sicad:
+    #     lazy: true
+    #     anonymous: false
+    #     pattern: ^/adminsicad
+    #     provider: user_database
 
-            remember_me:
-                secret:   '%kernel.secret%'
-                lifetime: 604800 # 1 week in seconds
-                path:     /    
+    main:
+      lazy: true
+      pattern: ^/
+      #user_checker: App\Security\UserChecker
+      provider: user_database
+      form_login:
+        login_path: login
+        check_path: login
+      logout:
+        path: logout
 
-            custom_authenticator: App\Security\LoginFormAuthenticator
+      remember_me:
+        secret: "%kernel.secret%"
+        lifetime: 604800 # 1 week in seconds
+        path: /
 
-    
+      custom_authenticator: App\Security\LoginFormAuthenticator
 
-          
-            
-            
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#the-firewall
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
-    access_control:
-         - { path: ^/adminsicad, roles: IS_AUTHENTICATED_FULLY }
-         # - { path: ^/profile, roles: ROLE_USER }
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+    - { path: ^/adminsicad, roles: IS_AUTHENTICATED_FULLY }
+    # - { path: ^/profile, roles: ROLE_USER }

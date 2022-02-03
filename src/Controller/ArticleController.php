@@ -87,13 +87,13 @@ class ArticleController extends AbstractController
         $array_categ = [];
         $listArticles = $this->getDoctrine()->getRepository(Article::class)->findAllArticleByTitleLocal($locale);
         $listCateg = $this->getDoctrine()->getRepository(Category::class)->getArrayOfAllCategory($locale);
-       
+
         foreach ($listCateg as  $categ) {
-      
-            array_push($array_categ ,$categ['labelLocal']);
+
+            array_push($array_categ, $categ['labelLocal']);
         }
 
-       
+
         return $this->render('admin/article/list_article.html.twig', [
 
             'listArticle' => $listArticles,
