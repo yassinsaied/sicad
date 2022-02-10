@@ -1,7 +1,7 @@
 {% extends 'admin/baseBack.html.twig' %}
 
 {% block title %}
-	{{'list.categ'|trans}}
+	{{'list.article'|trans}}
 {% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}" href="" type="text/css"/>
@@ -23,10 +23,12 @@
 							{{'list.article'|trans}}
 						</h3>
 					</div>
-                    <div class="col-md-2 ml-auto d-flex justify-content-end">
-							<button class="btn btn-icon btn-primary" type="button" data-toggle="collapse" data-target="#filter-article" aria-expanded="false" aria-controls="filter-article">
-								<span class="btn-inner--icon"><i class="ni ni-atom"></i></span>
-							</button>
+					<div class="col-md-2 ml-auto d-flex justify-content-end">
+						<button class="btn btn-icon btn-primary" type="button" data-toggle="collapse" data-target="#filter-article" aria-expanded="false" aria-controls="filter-article">
+							<span class="btn-inner--icon">
+								<i class="ni ni-atom"></i>
+							</span>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -37,7 +39,7 @@
 
 
 					<div class="row collapse" id="filter-article">
-				
+
 						<div class="form-group  pl-4 align-items-center">
 							<label class="form-control-label mr-2" for="input-last-name">
 								{{'date.search.datatable'|trans}}
@@ -82,18 +84,18 @@
 								{% endfor %}
 
 							</select>
-                            
 
 
 						</div>
 
-                        	<div class="form-group  pl-4 pt-5 align-items-center">
-						  
-                               <button type="reset" id="reset-filer" class="btn btn-primary btn-sm">Reset the Filter </button>
+						<div class="form-group  pl-4 pt-5 align-items-center">
 
-					     	</div>
+							<button type="reset" id="reset-filer" class="btn btn-primary btn-sm">Reset the Filter
+							</button>
 
-               
+						</div>
+
+
 					</div>
 
 					<div class="table-responsive data-table-div" data-length-menu="{{'length.menu'|trans}}" data-zero-records="{{'zero.records'|trans}}" data-info="{{'info'|trans}}" data-info-empty="{{'info.empty'|trans}}" data-info-filtered="{{'info.filtered'|trans}}" data-search="{{'search'|trans}}">
@@ -134,10 +136,10 @@
 												<i class="fa fa-trash"></i>
 
 											</a>
-											<a href="#" class="validate-article ">
+											<a href="#" class="pe-none">
 												<i class="ni ni-check-bold  {{ article.articleDetails.isValid ? 'valid-article' : 'invalid-article' }}"></i>
 											</a>
-											<a href="#" class="publish-article">
+											<a href="#" class="pe-none">
 												<i class="ni ni-world-2  {{ article.articleDetails.isPublished ? 'publish-article' : 'inpublish-article' }}"></i>
 											</a>
 
@@ -167,7 +169,7 @@
 		<script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
 		<!--<script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
-								<script type="text/javascript" src="{{ asset('js/dataTables.dateTime.min.js') }}"></script>!-->
+																		<script type="text/javascript" src="{{ asset('js/dataTables.dateTime.min.js') }}"></script>!-->
 
 		<script type="text/javascript" src="{{ asset('js/listeAticleAndCateg.js') }}"></script>
 

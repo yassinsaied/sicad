@@ -1,213 +1,217 @@
 /* update thumb user */
 
 #OpenImgUpload {
-    position: absolute;
-    left: 55%;
-    top: 40%;
-    z-index: 3000;
-    font-size: 25px;
+  position: absolute;
+  left: 55%;
+  top: 40%;
+  z-index: 3000;
+  font-size: 25px;
 }
 
 #image-thumb {
-    width: 134px;
-    height: 134px;
+  width: 134px;
+  height: 134px;
 }
 
 .avatar img {
-    height: 36px;
+  height: 36px;
 }
 
 .custom-file .custom-file-label,
 .custom-file #profile_thumbFile_file {
-    display: none;
+  display: none;
 }
 
 .anonymous-nav .navbar-brand {
-    font-size: 30px;
+  font-size: 30px;
 }
-
 
 /* data table */
 
 .dataTables_length {
-    float: left;
+  float: left;
 }
 
-table.dataTable>thead .sorting:before,
-table.dataTable>thead .sorting_asc:before,
-table.dataTable>thead .sorting_desc:before,
-table.dataTable>thead .sorting_asc_disabled:before,
-table.dataTable>thead .sorting_desc_disabled:before,
-table.dataTable>thead .sorting:after,
-table.dataTable>thead .sorting_asc:after,
-table.dataTable>thead .sorting_desc:after,
-table.dataTable>thead .sorting_asc_disabled:after,
-table.dataTable>thead .sorting_desc_disabled:after {
-    color: #233dd2;
-    font-size: 16px;
-    font-weight: bolder;
-    margin-right: 5px;
-    cursor: pointer;
+table.dataTable > thead .sorting:before,
+table.dataTable > thead .sorting_asc:before,
+table.dataTable > thead .sorting_desc:before,
+table.dataTable > thead .sorting_asc_disabled:before,
+table.dataTable > thead .sorting_desc_disabled:before,
+table.dataTable > thead .sorting:after,
+table.dataTable > thead .sorting_asc:after,
+table.dataTable > thead .sorting_desc:after,
+table.dataTable > thead .sorting_asc_disabled:after,
+table.dataTable > thead .sorting_desc_disabled:after {
+  color: #233dd2;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 .datatable-action {
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    padding-left: 5px !important;
-    padding-right: 5px !important;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
 }
 
 .datatable-action a {
-    padding: 5px;
-    font-size: 20px;
-    cursor: pointer;
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.datatable-action .pe-none {
+  cursor: auto;
 }
 
 .datatable-action a i {
-    margin: 5px;
+  margin: 5px;
 }
 
 .delete-categ i:hover,
 .delete-article i:hover {
-    color: #fb6340;
+  color: #fb6340;
 }
 
 .datatable-update-action i:hover,
 .valid-article,
 .publish-article,
 .activate-categ {
-    color: #2dce89;
+  color: #2dce89;
 }
 
 .invalid-article,
 .inpublish-article,
 .desactivate-categ {
-    color: #525f7f;
+  color: #525f7f;
 }
-
 
 /*sub mainmenu */
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #5e72e4;
+  color: #5e72e4;
 }
 
 .sub-category {
-    margin-bottom: 10px;
-    background: #f4f5f7;
+  margin-bottom: 10px;
+  background: #f4f5f7;
 }
 
 .sub-category .nav-item {
-    list-style: none;
+  list-style: none;
 }
 
 .sub-category .nav-item {
-    list-style: none;
+  list-style: none;
 }
 
 .navbar-nav .sub-category .nav-item a.nav-link {
-    padding: 5px 0px;
+  padding: 5px 0px;
 }
 
 .navbar-nav .sub-category .nav-item a.nav-link i {
-    min-width: 22px;
+  min-width: 22px;
 }
 
-.navbar-vertical .navbar-nav .nav-link>i {
-    min-width: 30px;
+.navbar-vertical .navbar-nav .nav-link > i {
+  min-width: 30px;
 }
-
 
 /* drop zone */
 
 .image-article-widget,
 #article_images_errors {
-    display: none;
+  display: none;
 }
 
 #images-article {
-    position: relative;
-    flex: 1;
-    display: flex;
-    padding: 20px;
-    border-color: #eeeeee;
-    border-style: dashed;
-    background-color: #fafafa;
-    color: #bdbdbd;
-    transition: border .24s ease-in-out;
-    min-height: 150px;
-    z-index: 1;
+  position: relative;
+  flex: 1;
+  display: flex;
+  padding: 20px;
+  border-color: #eeeeee;
+  border-style: dashed;
+  background-color: #fafafa;
+  color: #bdbdbd;
+  transition: border 0.24s ease-in-out;
+  min-height: 150px;
+  z-index: 1;
 }
 
 #images-article .msg-dropzone {
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, 0);
-    color: #5e72e4;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, 0);
+  color: #5e72e4;
 }
 
 #images-article .frame-image {
-    position: relative;
-    padding-bottom: 30px;
+  position: relative;
+  padding-bottom: 30px;
 }
 
 #images-article .frame-image .card-body img {
-    width: 100%;
-    height: 40%;
+  width: 100%;
+  height: 40%;
 }
 
 #images-article .frame-image .remove-image {
-    width: 30px;
-    height: 30px;
-    display: block;
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
-    left: 50%;
-    margin-left: -50px;
-    top: 50%;
-    margin-top: -50px;
-    z-index: 1000;
+  width: 30px;
+  height: 30px;
+  display: block;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  top: 50%;
+  margin-top: -50px;
+  z-index: 1000;
 }
 
 .title {
-    display: block;
-    width: 200px;
-    word-wrap: break-word;
+  display: block;
+  width: 200px;
+  word-wrap: break-word;
 }
 
 .table td,
 .table th {
-    font-size: .8125rem;
-    white-space: normal !important;
+  font-size: 0.8125rem;
+  white-space: normal !important;
 }
-
 
 /*add article form*/
 
 .nav-pills .nav-link {
-    padding-left: 0px;
-    padding-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .error-tab {
-    color: #fff !important;
-    background-color: #fb6340 !important;
+  color: #fff !important;
+  background-color: #fb6340 !important;
 }
 
 .li-ar .invalid-feedback,
 .li-en .invalid-feedback {
-    font-size: 70% !important;
+  font-size: 70% !important;
 }
-
 
 /*nav brand main menu*/
 
 .navbar-vertical .navbar-brand {
-    display: block;
-    margin: 10px 10px 20px 10px;
-    font-size: 1.8rem;
-    color: #5e72e4;
+  display: block;
+  margin: 10px 10px 20px 10px;
+  font-size: 1.8rem;
+  color: #5e72e4;
+}
+
+.card-home .card .icon {
+  width: 30px;
+  height: 30px;
 }

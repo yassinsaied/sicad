@@ -3,7 +3,7 @@ bienvenue: bienvenue
 
 #main menu
 Tableau.debord: Tableau de bord
-menu.category: Categories 
+menu.category: Categories
 add.menu.categ: Add category
 menu.article: Articles
 add.menu.article: Add article
@@ -85,7 +85,7 @@ button.modale.delete.categ: Delete this Category
 #article
 
 add.article: Add an article
-list.article : List of articles
+list.article: List of articles
 label.article.fr: French version of article
 label.article.en: English version of article
 label.article.ar: Arabic version of article
@@ -102,18 +102,18 @@ tab.article.erroren: The english content is not valid
 tab.article.errorar: The Arabic content is not valid
 label.article.date: Date of Article
 date.ivalid.article: ivalid format of date article
-title.article.titletable : Titres of articles
-categ.article.datatable : Categories of article
-date.article.datatable : Date
+title.article.titletable: Titres of articles
+categ.article.datatable: Categories of article
+date.article.datatable: Date
 action.article.datatable: Actions
 title.modale.delete.article: confirmation of deletion of l'article
-message.modale.delete.article : Are you sure you want to delete this article
-button.modale.delete.article: Delete this Article 
+message.modale.delete.article: Are you sure you want to delete this article
+button.modale.delete.article: Delete this Article
 submit.new.article: Add new article
-submit.update.article : Update article
-selectList.category.placeholder : Choose category
-
-
+submit.update.article: Update article
+selectList.category.placeholder: Choose category
+list.article.notvalid: List of articles Non valid
+list.article.notpublished: List of articles not Published
 
 #datatable
 length.menu: Records per page
@@ -122,11 +122,9 @@ info: Showing page
 info.empty: No records available
 info.eiltered: filtered from
 search: Search
-date.search.datatable : Search By Date
+date.search.datatable: Search By Date
 startdate.search.datatable: Start Date
 endDate.search.datatable: End Date
 
-
 #modale
 close: Close
-

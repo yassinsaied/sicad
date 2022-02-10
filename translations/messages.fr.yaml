@@ -8,7 +8,6 @@ add.menu.categ: Ajouter une catégorie
 menu.article: Articles
 add.menu.article: Ajouter un article
 
-
 #user Menu
 deconnecter: Se déconnecter
 Mon.profil: Mon profil
@@ -79,15 +78,15 @@ submit.update.categ: Modifier la catégorie
 list.table.lable: Catégorie
 list.table.action: Actions
 list.categ: Liste des catégories
-error.delete: Impossible de supprimer cette catégorie 
+error.delete: Impossible de supprimer cette catégorie
 title.modale.delete.categ: confirmation de suppression de la catégorie
 message.modale.delete.categ: Voulez-vous vraiment supprimer la catégorie
-placeholder.selecte.parent.categ: Choisissez une catégorie parente 
+placeholder.selecte.parent.categ: Choisissez une catégorie parente
 button.modale.delete.categ: supprimer la catégorie
 
 #article crud
 add.article: Ajouter un article
-list.article : Liste des articles
+list.article: Liste des articles
 label.article.fr: version Français de l'article
 label.article.en: version anglaise de l'article
 label.article.ar: version arabe de l'article
@@ -104,17 +103,18 @@ tab.article.erroren: la version anglaise n'est pas valide
 tab.article.errorar: la version arabe n'est pas valide
 label.article.date: Date de l'article
 date.ivalid.article: la format de date de l'article est ivalide
-title.article.titletable : Titres des articles
-categ.article.datatable : Catégories des articles
-date.article.datatable : Date
+title.article.titletable: Titres des articles
+categ.article.datatable: Catégories des articles
+date.article.datatable: Date
 action.article.datatable: Actions
 title.modale.delete.article: confirmation de suppression de l'article
-message.modale.delete.article : Voulez-vous vraiment supprimer l'article 
-button.modale.delete.article: supprimer l'article 
+message.modale.delete.article: Voulez-vous vraiment supprimer l'article
+button.modale.delete.article: supprimer l'article
 submit.new.article: ajouter L'article
-submit.update.article : Modifier L'article
-selectList.category.placeholder : Choisissez la catégorie
-
+submit.update.article: Modifier L'article
+selectList.category.placeholder: Choisissez la catégorie
+list.article.notvalid: Liste des articles Non validés
+list.article.notpublished: liste des articles non publiés
 #datatable
 
 length.menu: Enregistrements par page
@@ -123,7 +123,7 @@ info: Afficher la page
 info.empty: Aucun enregistrement disponible
 info.filtered: filtré de
 search: Recherche
-date.search.datatable : Recherche par date
+date.search.datatable: Recherche par date
 startdate.search.datatable: Date début
 endDate.search.datatable: Date fin
 

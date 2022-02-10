@@ -69,7 +69,8 @@ class ArticleController extends AbstractController
                 }
             }
 
-
+            $article->setIsValid(false);
+            $article->setIsPublished(false);
             $entityManger->flush();
             return $this->redirectToRoute('home_admin');
         }
@@ -83,7 +84,7 @@ class ArticleController extends AbstractController
 
     public function listArticle(Request $request)
     {
-        $locale = $request->getLocale();;
+        $locale = $request->getLocale();
         $array_categ = [];
         $listArticles = $this->getDoctrine()->getRepository(Article::class)->findAllArticleByTitleLocal($locale);
         $listCateg = $this->getDoctrine()->getRepository(Category::class)->getArrayOfAllCategory($locale);
@@ -102,8 +103,23 @@ class ArticleController extends AbstractController
     }
 
 
+    public function listArticleNotValide(Request $request)
+    {
+        $this->denyAccessUnlessGranted('ROLE_VALIDATOR');
+
+        $locale = $request->getLocale();
+        $listArticlesNotValid = $this->getDoctrine()->getRepository(Article::class)->findAllArticleNotValide($locale);
+
+        return $this->render('admin/article/list_article_not_valid.html.twig', [
+
+            'listArticle' => $listArticlesNotValid
+        ]);
+    }
+
+
     public function deleteArticle(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_VALIDATOR');
 
         if ($request->isXmlHttpRequest()) {
 
@@ -130,6 +146,7 @@ class ArticleController extends AbstractController
 
     public function validateArticle(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_VALIDATOR');
 
         if ($request->isXmlHttpRequest()) {
 
