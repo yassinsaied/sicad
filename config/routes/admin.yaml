@@ -1,29 +1,39 @@
 home_admin:
-    path: "/adminsicad/{_locale}"
-    controller: App\Controller\HomeAdminController::index
-    defaults:
-        _locale: '%locale%'
-    requirements:
-        _locale: '%app_locales%' 
-    
+  path: "/adminsicad/{_locale}"
+  controller: App\Controller\HomeAdminController::index
+  defaults:
+    _locale: "%locale%"
+  requirements:
+    _locale: "%app_locales%"
+
 update_profile:
-    path: "/adminsicad/update-profile/{_locale}"
-    controller: App\Controller\UserController::updateProfile
-    defaults:
-        _locale: '%locale%'
-    requirements:
-        _locale: '%app_locales%'
+  path: "/adminsicad/update-profile/{_locale}"
+  controller: App\Controller\UserController::updateProfile
+  defaults:
+    _locale: "%locale%"
+  requirements:
+    _locale: "%app_locales%"
 
 update_password:
-    path: "/adminsicad/update-password/{_locale}"
-    controller: App\Controller\UserController::updatePassword
-    defaults:
-        _locale: '%locale%'
-    requirements:
-        _locale: '%app_locales%'
-   
-   
-    
- 
-  
-   
+  path: "/adminsicad/update-password/{_locale}"
+  controller: App\Controller\UserController::updatePassword
+  defaults:
+    _locale: "%locale%"
+  requirements:
+    _locale: "%app_locales%"
+
+list_users:
+  path: "/adminsicad/list_users/{_locale}"
+  controller: App\Controller\UserController::listOfUsers
+  defaults:
+    _locale: "%locale%"
+  requirements:
+    _locale: "%app_locales%"
+
+activate_user:
+  path: "/adminsicad/activate-user/{slug}/{_locale}"
+  controller: App\Controller\UserController::activatUser
+  defaults:
+    _locale: "%locale%"
+  requirements:
+    _locale: "%app_locales%"

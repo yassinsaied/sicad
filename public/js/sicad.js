@@ -40,6 +40,10 @@ jQuery(function () {
       { width: 100, targets: "title-categ-th" },
       { width: 50, targets: "date-article-th" },
       { width: 50, targets: "action-article-th" },
+      { width: 70, targets: "datc-user-th" },
+      { width: 150, targets: "role-user-th" },
+      { width: 50, targets: "active-user-th" },
+      { width: 100, targets: "name-user-th" },
     ],
     paging: true,
     language: {
@@ -72,6 +76,7 @@ jQuery(function () {
     $("#min, #max,#filter-categ").val("");
     $("#min, #max,#filter-categ").trigger("change");
   });
+
   //Activate\Deactivate category action FROM DATATABLE
 
   $("#list-category").on("click", ".activate-action-categ", function (e) {
@@ -179,6 +184,34 @@ jQuery(function () {
           $("#" + slugArticle + "  .publish-article i")
             .removeClass("publish-article")
             .addClass("inpublish-article");
+        }
+      },
+      error: function (data) {
+        if (data === "impossible") {
+        }
+      },
+    });
+  });
+
+  // activate users FROM DATATABLE
+
+  $("#list-users").on("click", ".activate-user", function (e) {
+    e.preventDefault();
+    slugUser = $(this).closest(".row-user").attr("id");
+    console.log(slugUser);
+    $.ajax({
+      url: "/adminsicad/activate-user/" + slugUser,
+      data: { slugUser },
+      method: "post",
+      success: function (data) {
+        if (data === true) {
+          $("#" + slugUser + " .activate-user i")
+            .removeClass("inactif-user")
+            .addClass("actif-user");
+        } else if (data === false) {
+          $("#" + slugUser + " .activate-user i")
+            .removeClass("actif-user")
+            .addClass("inactif-user");
         }
       },
       error: function (data) {

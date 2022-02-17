@@ -13,7 +13,7 @@ add.menu.article: Add article
 deconnecter: Se déconnecter
 Mon.profil: Mon profil
 
-# profile form
+# user
 maj.profil: Upadte My Profile
 info.user: USER INFORMATION
 user.email: E-mail
@@ -25,6 +25,10 @@ phone: Phone
 info.administratif: ADMINISTRATIVE INFORMATION
 grade.administratif: Administrative grade
 fonction.administratif: Administrative function
+user.fullname: Nom et prénom
+user.role: Role Utilisateur
+user.isActivate: Eat Utilisateur
+user.date.creation: Date Creation
 
 # reset password form
 reset.passe: Reset My password

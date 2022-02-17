@@ -7,6 +7,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Form\ProfileType;
 use App\Entity\User;
 use App\Form\UpdatePasswordType;
@@ -86,11 +87,51 @@ class UserController extends AbstractController
 
     public function listOfUsers(Request $request)
     {
+        $roles = array();
+        $AllrolesHierarchy = $this->getParameter('security.role_hierarchy.roles');
 
-        $listOfUsers = $this->getDoctrine()->getRepository(User::class);
+        foreach ($AllrolesHierarchy as $originalRole => $inheritedRoles) {
+            foreach ($inheritedRoles as $inheritedRole) {
+                $roles[$inheritedRole] = array();
+            }
+
+            $roles[$originalRole] = array();
+        }
+
+        $listOfUsers = $this->getDoctrine()->getRepository(User::class)->findAll();
         return $this->render('admin/user/list_users.html.twig', [
-
-            'listOfUsers' => $listOfUsers
+            'listOfUsers' => $listOfUsers,
+            'roles' => $roles
         ]);
+    }
+
+
+    public function activatUser(Request $request)
+    {
+
+
+        if ($request->isXmlHttpRequest()) {
+
+            $entityManager =  $this->getDoctrine();
+            $slugUser = $request->get('slugUser');
+
+            $user = $entityManager->getRepository(User::class)->findOneBy([
+                'slug' =>  $slugUser
+            ]);
+
+            if ($user) {
+                if ($user->getIsActivate() == false) {
+                    $user->setIsActivate(true);
+                    $active = true;
+                } else {
+                    $user->setIsActivate(false);
+                    $active = false;
+                }
+                $entityManager->getManager()->flush();
+                return new JsonResponse($active);
+            }
+        }
+
+        return new JsonResponse('impossible');
     }
 }

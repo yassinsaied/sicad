@@ -1,104 +1,88 @@
 {% extends 'admin/baseBack.html.twig' %}
 
-{% block title %}{{'list.categ'|trans}}{% endblock %}
-{% block stylesheets %}
- <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}" href="" type="text/css" />
- <link rel="stylesheet" href="{{asset('css/responsive.bootstrap4.min.css')}}" href="" type="text/css" />
+{% block title %}
+	{{'list.categ'|trans}}
 {% endblock %}
-
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}" href="" type="text/css"/>
+	<link rel="stylesheet" href="{{asset('css/responsive.bootstrap4.min.css')}}" href="" type="text/css"/>
+{% endblock %}
 
 
 {% block content %}
 
 
-<div class="col-xl-12">
-    <div class="card">
-      <div class="card-header">
-        <div class="row align-items-center">
-          <div class="col-12">
-            <h3 class="mb-0">
-             {{'list.categ'|trans}}
-            </h3>
-          </div>
-    
-        </div>
-      </div>
-      <div class="card-body">
-     
-    
-          <div class="pl-lg-4">
-         <div class="table-responsive data-table-div" data-length-menu="{{'length.menu'|trans}}" data-zero-records="{{'zero.records'|trans}}" data-info="{{'info'|trans}}" data-info-empty="{{'info.empty'|trans}}" data-info-filtered="{{'info.filtered'|trans}}" data-search="{{'search'|trans}}">
-              <table id="list-category" class="liste-item table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr class="thead-light">
-               
-                <th scope="col" class="sort">{{'list.table.lable'|trans}}</th>
-                <th scope="col" class="sort">{{'sup.categ'|trans}}</th>
-                <th scope="col" class="sort">{{'list.table.action'|trans}}</th>
-           
-            </tr>
-        </thead>
-        <tbody>
-           {% for categ in listCateg %}
-                 
-        
-            <tr  class="row-categ">
-          
-                <td>{{ categ.labelLocal }}</td>
-                <td>{{ categ.labelParentLocal }}</td>
-                
-                <td class="datatable-action" id="{{categ.slug}}">
-                <a href="{{ path('update_category', {slug: categ.slug}) }}" class="datatable-update-action">
-                <i class="fa fa-edit"></i>
-   
-                </a>
-                 <a href="#" class="activate-action-categ">
-                <i class="ni ni-check-bold  {{ categ.isActivate ? 'activate-categ' : 'desactivate-categ' }}"></i>
-               
-                </a>
-                 </td>
- 
-            </tr>
-             {% endfor %}  
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="row align-items-center">
+					<div class="col-12">
+						<h3 class="mb-0">
+							{{'list.categ'|trans}}
+						</h3>
+					</div>
 
-        </tbody>
- 
-    </table> 
-
-   </div>
-      </div>
-    </div>
-  </div>
+				</div>
+			</div>
+			<div class="card-body">
 
 
+				<div class="pl-lg-4">
+					<div class="table-responsive data-table-div" data-length-menu="{{'length.menu'|trans}}" data-zero-records="{{'zero.records'|trans}}" data-info="{{'info'|trans}}" data-info-empty="{{'info.empty'|trans}}" data-info-filtered="{{'info.filtered'|trans}}" data-search="{{'search'|trans}}">
+						<table id="list-category" class="liste-item table table-striped table-bordered" style="width:100%">
+							<thead>
+								<tr class="thead-light">
+
+									<th scope="col" class="sort">{{'list.table.lable'|trans}}</th>
+									<th scope="col" class="sort">{{'sup.categ'|trans}}</th>
+									<th scope="col" class="sort">{{'list.table.action'|trans}}</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								{% for categ in listCateg %}
 
 
+									<tr class="row-categ">
+
+										<td>{{ categ.labelLocal }}</td>
+										<td>{{ categ.labelParentLocal }}</td>
+
+										<td class="datatable-action" id="{{categ.slug}}">
+											<a href="{{ path('update_category', {slug: categ.slug}) }}" class="datatable-update-action">
+												<i class="fa fa-edit"></i>
+
+											</a>
+											<a href="#" class="activate-action-categ">
+												<i class="ni ni-check-bold  {{ categ.isActivate ? 'activate-categ' : 'desactivate-categ' }}"></i>
+
+											</a>
+										</td>
+
+									</tr>
+								{% endfor %}
+
+							</tbody>
+
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-
- {% include 'admin/helpresAdmin/modals.html.twig' with {'title_modal': 'title.modale.delete.categ'|trans , 'message_modal' : 'message.modale.delete.categ'|trans , "label_button" : 'button.modale.delete.categ' } %}
-
+		{% include 'admin/helpresAdmin/modals.html.twig' with {'title_modal': 'title.modale.delete.categ'|trans , 'message_modal' : 'message.modale.delete.categ'|trans , "label_button" : 'button.modale.delete.categ' } %}
 
 
+	{% endblock %}
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/sicad.js') }}"></script>
 
 
-
-
-
-
-
-
-
-
-{% endblock %}
-
-  {% block javascripts %}
-<script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/listeAticleAndCateg.js') }}"></script>
-  
-
-  
-  {% endblock %}
+	{% endblock %}

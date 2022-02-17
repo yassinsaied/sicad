@@ -79,14 +79,21 @@ table.dataTable > thead .sorting_desc_disabled:after {
 .datatable-update-action i:hover,
 .valid-article,
 .publish-article,
-.activate-categ {
+.activate-categ,
+.actif-user {
   color: #2dce89;
 }
 
 .invalid-article,
 .inpublish-article,
-.desactivate-categ {
+.desactivate-categ,
+.inactif-user {
   color: #525f7f;
+}
+
+.actif-user,
+.inactif-user {
+  font-size: 20px;
 }
 
 /*sub mainmenu */

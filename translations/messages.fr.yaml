@@ -13,7 +13,7 @@ add.menu.article: Ajouter un article
 deconnecter: Se déconnecter
 Mon.profil: Mon profil
 
-# profile form
+# user
 maj.profil: Mettre à jour mon profil
 info.user: INFORMATIONS DE L'UTILISATEUR
 user.email: "Adresse e-mail"
@@ -25,6 +25,10 @@ phone: Téléphone
 info.administratif: INFORMATIONS ADMINISTRATIVES
 grade.administratif: Grade administratif
 fonction.administratif: Fonction administrative
+user.fullname: Nom et prénom
+user.role: Role Utilisateur
+user.isActivate: Eat Utilisateur
+user.date.creation: Date Creation
 
 # update password form
 reset.passe: Réinitialiser mon mot de passe
