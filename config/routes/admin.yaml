@@ -37,3 +37,11 @@ activate_user:
     _locale: "%locale%"
   requirements:
     _locale: "%app_locales%"
+
+modify_role_user:
+  path: "/adminsicad/modify-role-user/{slug}/{_locale}"
+  controller: App\Controller\UserController::modifyRoleUser
+  defaults:
+    _locale: "%locale%"
+  requirements:
+    _locale: "%app_locales%"

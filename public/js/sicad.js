@@ -198,10 +198,41 @@ jQuery(function () {
   $("#list-users").on("click", ".activate-user", function (e) {
     e.preventDefault();
     slugUser = $(this).closest(".row-user").attr("id");
-    console.log(slugUser);
     $.ajax({
       url: "/adminsicad/activate-user/" + slugUser,
       data: { slugUser },
+      method: "post",
+      success: function (data) {
+        if (data === true) {
+          $("#" + slugUser + " .activate-user i")
+            .removeClass("inactif-user")
+            .addClass("actif-user");
+        } else if (data === false) {
+          $("#" + slugUser + " .activate-user i")
+            .removeClass("actif-user")
+            .addClass("inactif-user");
+        }
+      },
+      error: function (data) {
+        if (data === "impossible") {
+        }
+      },
+    });
+  });
+
+  // modifate role users FROM DATATABLE
+
+  $("#list-users").on("change", ".select-role", function (e) {
+    e.preventDefault();
+    slugUser = $(this).closest(".row-user").attr("id");
+    roleUser = $(this).val();
+    console.log(slugUser, roleUser);
+    $.ajax({
+      url: "/adminsicad/modify-role-user/" + slugUser,
+      data: {
+        slugUser,
+        roleUser,
+      },
       method: "post",
       success: function (data) {
         if (data === true) {

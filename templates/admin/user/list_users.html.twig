@@ -49,7 +49,7 @@
 										<td>{{user.email}}</td>
 										<td>
 
-											<select class="form-control form-control-sm">
+											<select class="form-control form-control-sm select-role">
 												{% for keyRole in roles|keys %}
 													<option value="{{keyRole}}" {{ keyRole == user.roles[0] ? 'selected' : '' }}>{{keyRole}}</option>
 
