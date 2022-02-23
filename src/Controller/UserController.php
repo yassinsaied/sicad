@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Form\ProfileType;
 use App\Entity\User;
 use App\Form\UpdatePasswordType;
@@ -20,11 +21,13 @@ use Symfony\Component\Form\FormError;
 class UserController extends AbstractController
 {
     private $entityManager;
+    private  $translator;
 
-    public function __construct(EntityManagerInterface $entityManagerInterface)
+    public function __construct(EntityManagerInterface $entityManagerInterface, TranslatorInterface $translator)
     {
 
         $this->entityManager = $entityManagerInterface;
+        $this->translator = $translator;
     }
 
     public function updateProfile(Request $request): Response
@@ -68,11 +71,11 @@ class UserController extends AbstractController
                 $this->entityManager->flush();
 
 
-                $this->addFlash('success', 'Your password has been successfully changed');
+                $this->addFlash('success', $this->translator->trans('flash.message.successUpdate.passord'));
                 return $this->redirectToRoute('home_admin');
             } else {
 
-                $form->addError(new FormError('Old Password Is not valid'));
+                $form->addError(new FormError($this->translator->trans('invalid.oldpass')));
             }
         }
 
@@ -111,7 +114,6 @@ class UserController extends AbstractController
     public function activatUser(Request $request, MailerInterface $mailer)
     {
 
-
         if ($request->isXmlHttpRequest()) {
 
             $entityManager =  $this->getDoctrine();
@@ -125,31 +127,27 @@ class UserController extends AbstractController
                 if ($user->getIsActivate() == false) {
                     $user->setIsActivate(true);
                     $active = true;
-                    $mailMessage = 'Your account is activate By administrator';
+                    $mailMessage = $this->translator->trans('activated.mail.message');
                 } else {
                     $user->setIsActivate(false);
                     $active = false;
-                    $mailMessage = 'Your account is desactivate By administrator';
+                    $mailMessage = $this->translator->trans('deactivated.mail.message');
                 }
                 $entityManager->getManager()->flush();
 
-
                 //sending email for activation/dasactivation user 
 
-
-                $email = (new Email())
+                $email = (new TemplatedEmail())
                     ->from('sicad.pg@gmail.com')
                     ->to($user->getEmail())
-                    ->subject($mailMessage)
-                    ->text('Sending emails is fun again!')
-                    ->html('<p>See Twig integration for better HTML integration!</p>');
-
-                //var_dump($email);
+                    ->subject('activation account sicad')
+                    ->htmlTemplate('admin/user/activate_user_email.html.twig')
+                    ->context([
+                        'mailMessage' => $mailMessage,
+                        'username' => $user->getLastName(),
+                    ]);
 
                 $mailer->send($email);
-
-
-
 
                 return new JsonResponse($active);
             }

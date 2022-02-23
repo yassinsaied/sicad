@@ -8,6 +8,7 @@ menu.category: catégories
 add.menu.categ: Ajouter une catégorie
 menu.article: Articles
 add.menu.article: Ajouter un article
+user.menu.management: Gestion des utilisateurs
 
 #user Menu
 deconnecter: Se déconnecter
@@ -35,6 +36,8 @@ reset.passe: Réinitialiser mon mot de passe
 current.passe: Votre mot de passe actuel
 new.passe: Nouveau mot de passe
 Confirme.new.passe: Confirmer le nouveau mot de passe
+invalid.oldpass: L'ancien mot de passe n'est pas valide
+flash.message.successUpdate.passord: Votre mot de passe a été changé avec succès
 
 #login
 connexion: Connexion
@@ -120,8 +123,8 @@ submit.update.article: Modifier L'article
 selectList.category.placeholder: Choisissez la catégorie
 list.article.notvalid: Liste des articles Non validés
 list.article.notpublished: liste des articles non publiés
-#datatable
 
+#datatable
 length.menu: Enregistrements par page
 zero.records: Rien trouvé - désolé
 info: Afficher la page
@@ -132,5 +135,11 @@ date.search.datatable: Recherche par date
 startdate.search.datatable: Date début
 endDate.search.datatable: Date fin
 
+#User Management
+list.users: List des utilisateurs
 #modale
 close: Fermer
+
+#mailer
+activated.mail.message: Votre compte est activé Par administrateur
+deactivated.mail.message: Votre compte est désactivé Par l'administrateur

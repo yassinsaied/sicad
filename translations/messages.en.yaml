@@ -8,6 +8,7 @@ menu.category: Categories
 add.menu.categ: Add category
 menu.article: Articles
 add.menu.article: Add article
+user.menu.management: User Management
 
 #user Menu
 deconnecter: Se déconnecter
@@ -36,6 +37,8 @@ current.passe: Your current password
 new.passe: New Password
 Confirme.new.passe: Confirm the new password
 forgot.pass: Forgot password?
+invalid.oldpass: Old Password Is not valid
+flash.message.successUpdate.passord: Your password has been successfully changed
 
 #login
 connexion: Login
@@ -131,5 +134,12 @@ date.search.datatable: Search By Date
 startdate.search.datatable: Start Date
 endDate.search.datatable: End Date
 
+#User Management
+list.users: List of users
+
 #modale
 close: Close
+
+#mailer
+activated.mail.message: Your account is activated By administrator
+deactivated.mail.message: Your account is deactivated By administrator
