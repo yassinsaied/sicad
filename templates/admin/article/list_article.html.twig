@@ -142,6 +142,9 @@
 											<a href="#" class="pe-none">
 												<i class="ni ni-world-2  {{ article.articleDetails.isPublished ? 'publish-article' : 'inpublish-article' }}"></i>
 											</a>
+											<a href="{{ path('see_as_article', {slug: article.articleDetails.slug}) }}">
+												<i class="fa fa-eye" aria-hidden="true"></i>
+											</a>
 
 
 										</td>

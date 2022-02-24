@@ -82,6 +82,15 @@ class ArticleController extends AbstractController
     }
 
 
+    public function seeAsArticle(Request $request, Article $article)
+    {
+
+        return $this->render('admin/article/see_as_article.html.twig', [
+            'article' => $article
+        ]);
+    }
+
+
     public function listArticle(Request $request)
     {
         $locale = $request->getLocale();

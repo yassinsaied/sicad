@@ -15,14 +15,18 @@
 				<!-- Nav items -->
 				<ul
 					class="navbar-nav">
-					<!--category config -->
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('list_users') }}">
-							<i class="ni ni-circle-08"></i>
-							<span class="nav-link-text">{{'user.menu.management'|trans}}</span>
-						</a>
-					</li>
 
+					<!--user config -->
+					{% if is_granted('ROLE_ADMIN') %}
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('list_users') }}">
+								<i class="ni ni-circle-08"></i>
+								<span class="nav-link-text">{{'user.menu.management'|trans}}</span>
+							</a>
+						</li>
+
+					{% endif %}
 
 					<!-- category config  -->
 					<li class="nav-item">

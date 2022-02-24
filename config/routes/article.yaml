@@ -53,3 +53,11 @@ publish_article:
     _locale: "%locale%"
   requirements:
     _locale: "%app_locales%"
+
+see_as_article:
+  path: "/adminsicad/see-as-article/{slug}/{_locale}"
+  controller: App\Controller\ArticleController::seeAsArticle
+  defaults:
+    _locale: "%locale%"
+  requirements:
+    _locale: "%app_locales%"

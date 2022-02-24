@@ -92,6 +92,8 @@ class UserController extends AbstractController
 
     public function listOfUsers(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $roles = array();
         $AllrolesHierarchy = $this->getParameter('security.role_hierarchy.roles');
 
@@ -111,8 +113,9 @@ class UserController extends AbstractController
     }
 
 
-    public function activatUser(Request $request, MailerInterface $mailer)
+    public function activateUser(Request $request, MailerInterface $mailer)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         if ($request->isXmlHttpRequest()) {
 
@@ -160,6 +163,9 @@ class UserController extends AbstractController
 
     public function modifyRoleUser(Request $request)
     {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($request->isXmlHttpRequest()) {
 
             $entityManager =  $this->getDoctrine();
