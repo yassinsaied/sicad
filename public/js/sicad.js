@@ -251,4 +251,10 @@ jQuery(function () {
       },
     });
   });
+
+  // disable auto slide crusale
+
+  $(".carousel").carousel({
+    interval: false,
+  });
 });
