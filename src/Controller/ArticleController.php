@@ -36,6 +36,7 @@ class ArticleController extends AbstractController
                 $entityManger->persist($image);
             }
 
+            $article->setUser($this->getUser());
             $entityManger->persist($article);
             $entityManger->flush();
             return $this->redirectToRoute('home_admin');
@@ -68,7 +69,7 @@ class ArticleController extends AbstractController
                     $image->setArticle($article);
                 }
             }
-
+            $article->setUser($this->getUser());
             $article->setIsValid(false);
             $article->setIsPublished(false);
             $entityManger->flush();
