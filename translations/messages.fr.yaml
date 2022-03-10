@@ -143,3 +143,7 @@ close: Fermer
 #mailer
 activated.mail.message: Votre compte est activé Par administrateur
 deactivated.mail.message: Votre compte est désactivé Par l'administrateur
+
+#see as
+title.seeas.article: Voir l'article
+article.built.by: crée par

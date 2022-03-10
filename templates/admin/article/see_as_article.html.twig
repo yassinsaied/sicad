@@ -110,9 +110,24 @@
 
 				</div>
 
-				<span class="avatar avatar-sm rounded-circle">
-					<img alt="Image placeholder" src="{{asset('uploads/user/'~ article.user.thumb)}}"/>
-				</span>
+
+				<hr class="my-1">
+
+				<div class="mt-2 media align-items-center justify-content-between">
+					<div class="author d-flex align-items-center ">
+						<span class="avatar avatar-sm rounded-circle m-1">
+							<img alt="Image placeholder" src="{{asset('uploads/user/'~ article.user.thumb)}}"/>
+						</span>
+
+						<span class="mb-0 text-sm font-weight-bold m-1">
+							{{article.user.firstName ~" " ~ article.user.lastName  }}
+						</span>
+					</div>
+					<div class="date-article">
+						{{ article.createdAt|date("d/m/Y") }}
+					</div>
+
+				</div>
 			</div>
 
 

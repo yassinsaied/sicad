@@ -69,7 +69,7 @@
 							<li class="nav-item li-ar" data-error-msg="{{'tab.article.errorar'|trans}}">
 								<a class="nav-link mb-sm-3 mb-md-0" id="tabsar" data-toggle="tab" href="#tabar" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false">
 									<i class="fas fa-align-right mr-1 mr-1"></i>
-									{{'label.article.fr'|trans}}</a>
+									{{'label.article.ar'|trans}}</a>
 							</li>
 						</ul>
 					</div>
@@ -156,31 +156,40 @@
 								<div class="has-error">
 									{{ form_errors(editArticleForm.images) }}
 								</div>
-                      
 
 
 								<div class="row drop-zone" id="images-article" data-prototype="{{form_row(editArticleForm.images.vars.prototype)|e }}">
 									{% if editArticleForm.images.vars.value is not null %}
-                                          {% set idarticleImage = 0 %}
-												{% for image in editArticleForm.images.vars.value %}
-                                                    {% if image.name is not null %}
-													
-												        <div class="frame-image col-xl-4 col-lg-4 col-md-6 col-sm-12"> <div class="card card-stats"> <div class="card-body"> <img  src="{{asset('uploads/articles/'~ image.name) | imagine_filter('article_thumb_uploaded') }}"/><div class="d-flex justify-content-end"><a class="remove-image"  data-id-element="{{idarticleImage}}"><i class="fas fa-trash-alt"></i></a></div> </div></div></div>
+										{% set idarticleImage = 0 %}
+										{% for image in editArticleForm.images.vars.value %}
+											{% if image.name is not null %}
 
-                                                     {% set idarticleImage = idarticleImage + 1 %}
+												<div class="frame-image col-xl-4 col-lg-4 col-md-6 col-sm-12">
+													<div class="card card-stats">
+														<div class="card-body">
+															<img src="{{asset('uploads/articles/'~ image.name) | imagine_filter('article_thumb_uploaded') }}"/><div class="d-flex justify-content-end">
+																<a class="remove-image" data-id-element="{{idarticleImage}}">
+																	<i class="fas fa-trash-alt"></i>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
 
-													{% endif %}
-													
-												{% endfor %}
+												{% set idarticleImage = idarticleImage + 1 %}
 
-										{% else %}
-										  <p class="h5 msg-dropzone d-flex">Drag 'n' drop some files here, or click to select files
-									           <i class="ml-2 mr-2  fas fa-upload"></i>
-								         	</p>	
+											{% endif %}
+
+										{% endfor %}
+
+									{% else %}
+										<p class="h5 msg-dropzone d-flex">Drag 'n' drop some files here, or click to select files
+											<i class="ml-2 mr-2  fas fa-upload"></i>
+										</p>
 
 									{% endif %}
 
-									
+
 								</div>
 							</div>
 						</div>
@@ -195,7 +204,7 @@
 
 					</div>
 
-				  	<input type="hidden" value="0" id="counter-widget"/>
+					<input type="hidden" value="0" id="counter-widget"/>
 
 					{{ form_end(editArticleForm) }}
 				</div>
@@ -207,7 +216,7 @@
 
 
 	{% block _article_images_entry_widget  %}
-	
+
 		{% if form.vars.value.name is defined  %}
 			{{ form_widget(form.imagefile , {'value' : form.vars.value.name}) }}
 
